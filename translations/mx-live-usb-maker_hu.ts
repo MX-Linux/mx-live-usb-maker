@@ -153,7 +153,7 @@
     <message>
         <location filename="../mainwindow.ui" line="431"/>
         <source>Verbosity (less to more):</source>
-        <translation>Üzenetek részletessége:</translation>
+        <translation>Üzenetek részletessége (kevesebbről többre):</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="470"/>
@@ -254,7 +254,7 @@
     <message>
         <location filename="../mainwindow.ui" line="753"/>
         <source>Clone a mounted live system</source>
-        <translation type="unfinished"></translation>
+        <translation>Csatolt live rendszer klónozása</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="760"/>
@@ -305,7 +305,7 @@ Várja meg a folyamat befejeződését</translation>
     <message>
         <location filename="../mainwindow.cpp" line="162"/>
         <source>MX Live Usb Maker</source>
-        <translation type="unfinished"></translation>
+        <translation>MX Live-USB készítő</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="333"/>
