@@ -464,8 +464,16 @@ void MainWindow::pushNext_clicked()
         QMessageBox::critical(this, tr("Error"), tr("Please select a USB device to write to"));
         return;
     }
-    QString msg = tr("These actions will destroy all data on \n\n") + ui->comboUsb->currentText().simplified() + "\n\n "
-                  + tr("Do you wish to continue?");
+    const QString targetLabel = ui->comboUsb->currentText().simplified();
+    QString msg;
+    if (ui->checkUpdate->isChecked() && !ui->radioDd->isChecked()) {
+        msg = tr("Update mode is selected. The live system on %1 will be updated with the new ISO without reformatting the "
+                 "device.\n\nExisting data and persistence should remain, but please back up anything important.\n\nDo you "
+                 "wish to continue?")
+                  .arg(targetLabel);
+    } else {
+        msg = tr("These actions will destroy all data on \n\n") + targetLabel + "\n\n " + tr("Do you wish to continue?");
+    }
     if (QMessageBox::Yes != QMessageBox::warning(this, windowTitle(), msg, QMessageBox::Yes, QMessageBox::No)) {
         return;
     }
