@@ -1,3 +1,9 @@
+CUSTOMPROGRAMNAME (25.12) mx; urgency=medium
+
+  * Clarify update confirmation dialog
+
+ -- Adrian <adrian@mxlinux.org>  Wed, 03 Dec 2025 14:32:17 -0500
+
 CUSTOMPROGRAMNAME (25.09.3) mx; urgency=medium
 
   * Change layout to make the windows fit for screens with smaller
