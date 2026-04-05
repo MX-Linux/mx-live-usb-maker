@@ -1486,6 +1486,9 @@ QString LiveUsbMakerBackend::logPath() const
 bool LiveUsbMakerBackend::runCommand(const QString &program, const QStringList &args, QString *error, bool allowFail) const
 {
     QProcess process;
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    env.insert(QStringLiteral("LC_ALL"), QStringLiteral("C"));
+    process.setProcessEnvironment(env);
     process.setProgram(program);
     process.setArguments(args);
     process.setProcessChannelMode(QProcess::MergedChannels);
@@ -1520,6 +1523,9 @@ bool LiveUsbMakerBackend::runCommandShell(const QString &command, QString *error
 bool LiveUsbMakerBackend::runCommandOutput(const QString &program, const QStringList &args, QString *output, QString *error) const
 {
     QProcess process;
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    env.insert(QStringLiteral("LC_ALL"), QStringLiteral("C"));
+    process.setProcessEnvironment(env);
     process.setProgram(program);
     process.setArguments(args);
     process.setProcessChannelMode(QProcess::MergedChannels);

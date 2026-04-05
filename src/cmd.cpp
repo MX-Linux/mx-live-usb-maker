@@ -13,6 +13,9 @@ Cmd::Cmd(QObject *parent)
       elevationCommand{elevationTool()},
       helperPath{"/usr/lib/" + QApplication::applicationName() + "/helper"}
 {
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    env.insert(QStringLiteral("LC_ALL"), QStringLiteral("C"));
+    setProcessEnvironment(env);
 }
 
 QString Cmd::elevationTool()
