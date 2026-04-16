@@ -92,7 +92,9 @@ bool MainWindow::checkDestSize()
 {
     // Get target device size information
     bool ok = false;
-    const QString sizeOutput = cmd.getOut(QString("lsblk --output SIZE -n --bytes /dev/%1 | head -1").arg(device), Cmd::QuietMode::Yes).trimmed();
+    const QStringList sizeLines = cmd.getOut(QString("lsblk --output SIZE -n --bytes /dev/%1").arg(device),
+                                              Cmd::QuietMode::Yes).split('\n', Qt::SkipEmptyParts);
+    const QString sizeOutput = sizeLines.isEmpty() ? QString() : sizeLines.first().trimmed();
     if (sizeOutput.isEmpty()) {
         qDebug() << "Empty lsblk output for device:" << device;
         return false;
@@ -180,11 +182,17 @@ void MainWindow::makeUsb(const QString &options)
     QString source = '"' + ui->pushSelectSource->property("filename").toString() + '"';
     QString sourceSize;
 
+    auto firstField = [](const QString &out) {
+        return out.section('\t', 0, 0).trimmed();
+    };
     if (!ui->checkCloneLive->isChecked() && !ui->checkCloneMode->isChecked()) {
-        sourceSize = cmd.getOut(QString("du -m %1 2>/dev/null | cut -f1").arg(source), Cmd::QuietMode::Yes);
+        sourceSize = firstField(cmd.getOut(QString("du -m %1 2>/dev/null").arg(source), Cmd::QuietMode::Yes));
     } else if (ui->checkCloneMode->isChecked()) {
-        sourceSize = cmd.getOut(QString("du -m --summarize %1 2>/dev/null | cut -f1").arg(source), Cmd::QuietMode::Yes);
-        const QString rootPartition = cmd.getOut(QString("df --output=source %1 | awk 'END{print $1}'").arg(source)).trimmed();
+        sourceSize = firstField(cmd.getOut(QString("du -m --summarize %1 2>/dev/null").arg(source), Cmd::QuietMode::Yes));
+        const QStringList dfLines = cmd.getOut(QString("df --output=source %1").arg(source))
+                                        .split('\n', Qt::SkipEmptyParts);
+        const QString rootPartition = dfLines.isEmpty() ? QString()
+                                                        : dfLines.last().section(' ', 0, 0, QString::SectionSkipEmpty).trimmed();
         source = "clone=" + source.remove('"');
         // Check if source and destination are on the same device (only if rootPartition is valid)
         if (!rootPartition.isEmpty() && "/dev/" + device == getDrivePath(rootPartition)) {
@@ -194,7 +202,7 @@ void MainWindow::makeUsb(const QString &options)
     } else if (ui->checkCloneLive->isChecked()) {
         source = "clone";
         QString path = isToRam() ? LivePaths::TO_RAM : LivePaths::BOOT_DEV;
-        sourceSize = cmd.getOut(QString("du -m --summarize %1 2>/dev/null | cut -f1").arg(path), Cmd::QuietMode::Yes);
+        sourceSize = firstField(cmd.getOut(QString("du -m --summarize %1 2>/dev/null").arg(path), Cmd::QuietMode::Yes));
     }
 
     if (!checkDestSize()) {
@@ -1031,25 +1039,25 @@ void MainWindow::radioNormalClicked()
 bool MainWindow::isAntiXMxFamily(const QString &selected)
 {
     Cmd utilCmd(nullptr);
-    return utilCmd.run(
-        QStringLiteral("xorriso -indev '%1' -find /antiX -name linuxfs -prune  2>/dev/null | grep -q /antiX/linuxfs")
-            .arg(selected),
+    const QString out = utilCmd.getOut(
+        QStringLiteral("xorriso -indev '%1' -find /antiX -name linuxfs -prune  2>/dev/null").arg(selected),
         Cmd::QuietMode::Yes);
+    return out.contains(QStringLiteral("/antiX/linuxfs"));
 }
 
 bool MainWindow::isArchIsoFamily(const QString &selected)
 {
     Cmd utilCmd(nullptr);
-    if (utilCmd.run(
-            QStringLiteral("xorriso -indev '%1' -find /arch -name airootfs.sfs -prune  2>/dev/null | grep -q /arch/.*/airootfs.sfs")
-                .arg(selected),
-            Cmd::QuietMode::Yes)) {
+    static const QRegularExpression sfsRx(QStringLiteral("/arch/.*/airootfs\\.sfs"));
+    static const QRegularExpression erofsRx(QStringLiteral("/arch/.*/airootfs\\.erofs"));
+    if (sfsRx.match(utilCmd.getOut(
+            QStringLiteral("xorriso -indev '%1' -find /arch -name airootfs.sfs -prune  2>/dev/null").arg(selected),
+            Cmd::QuietMode::Yes)).hasMatch()) {
         return true;
     }
-    return utilCmd.run(
-        QStringLiteral("xorriso -indev '%1' -find /arch -name airootfs.erofs -prune  2>/dev/null | grep -q /arch/.*/airootfs.erofs")
-            .arg(selected),
-        Cmd::QuietMode::Yes);
+    return erofsRx.match(utilCmd.getOut(
+        QStringLiteral("xorriso -indev '%1' -find /arch -name airootfs.erofs -prune  2>/dev/null").arg(selected),
+        Cmd::QuietMode::Yes)).hasMatch();
 }
 
 void MainWindow::pushLumLogFileClicked()
@@ -1139,8 +1147,9 @@ quint64 MainWindow::calculateLinuxfsSize(const QString &linuxfsPath)
     const QFileInfo info(linuxfsPath);
     if (info.isDir()) {
         // For directories, get used space via df command
-        const QString cmdStr = QString("df --output=used -B1 \"%1\" | tail -1").arg(linuxfsPath);
-        const QString usedStr = cmd.getOut(cmdStr, Cmd::QuietMode::Yes).trimmed();
+        const QString cmdStr = QString("df --output=used -B1 \"%1\"").arg(linuxfsPath);
+        const QStringList dfLines = cmd.getOut(cmdStr, Cmd::QuietMode::Yes).split('\n', Qt::SkipEmptyParts);
+        const QString usedStr = dfLines.isEmpty() ? QString() : dfLines.last().trimmed();
         bool ok = false;
         const quint64 sourceSizeBytes = usedStr.toULongLong(&ok);
         return ok ? sourceSizeBytes : 0;
