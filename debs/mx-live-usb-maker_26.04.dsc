@@ -2,7 +2,7 @@ Format: 3.0 (native)
 Source: mx-live-usb-maker
 Binary: mx-live-usb-maker
 Architecture: any
-Version: 26.04.1
+Version: 26.04
 Maintainer: Adrian <adrian@mxlinux.org>
 Homepage: https://github.com/MX-Linux/mx-live-usb-maker
 Standards-Version: 3.9.8
@@ -11,8 +11,8 @@ Build-Depends: debhelper-compat (= 12), cmake (>= 3.16), ninja-build, qt6-base-d
 Package-List:
  mx-live-usb-maker deb admin optional arch=any
 Checksums-Sha1:
- b7e4c94063d8889a3c9879ec7174dd0453b321a0 379196 mx-live-usb-maker_26.04.1.tar.xz
+ f48aeec8047c1d101d16afeb45f0462eadbf8798 527888 mx-live-usb-maker_26.04.tar.xz
 Checksums-Sha256:
- 1f9f64fe2e0641d08c105b5118173821b51fbd398a7031af62c86a601ac75120 379196 mx-live-usb-maker_26.04.1.tar.xz
+ 083b622eebf5ed016fd689b9e9e6862a73e988efd91ea962953a11d21d589677 527888 mx-live-usb-maker_26.04.tar.xz
 Files:
- 7c928467bbc94b220e5a54ad7004a0b9 379196 mx-live-usb-maker_26.04.1.tar.xz
+ f36e9b8922f8f69ce2a44fe768a3e348 527888 mx-live-usb-maker_26.04.tar.xz
