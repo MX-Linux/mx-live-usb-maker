@@ -1,3 +1,9 @@
+mx-live-usb-maker (26.04.1) mx; urgency=medium
+
+  * add virtual block device numbers
+
+ -- Dolphin Oracle <dolphinoracle@gmail.com>  Sat, 18 Apr 2026 18:19:11 -0400
+
 mx-live-usb-maker (26.04) mx; urgency=medium
 
   * Add virtual block device major numbers (202, 252, 253, 254)
