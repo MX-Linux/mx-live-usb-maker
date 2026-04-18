@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Sat, 18 Apr 2026 18:19:11 -0400
+Source: mx-live-usb-maker
+Architecture: source
+Version: 26.04.1
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Dolphin Oracle <dolphinoracle@gmail.com>
+Changes:
+ mx-live-usb-maker (26.04.1) mx; urgency=medium
+ .
+   * add virtual block device numbers
+Checksums-Sha1:
+ cf406f651a559b512d6c3946ac0f4e51ea7a570f 785 mx-live-usb-maker_26.04.1.dsc
+ b7e4c94063d8889a3c9879ec7174dd0453b321a0 379196 mx-live-usb-maker_26.04.1.tar.xz
+ 3a60d19f4f1d9fdc81bbac3cef5d37f1e4ed40a9 10882 mx-live-usb-maker_26.04.1_source.buildinfo
+Checksums-Sha256:
+ 4cca216125d4a1bf7d0bae5d8808404ddff06a76c381871518c65e035bf1175a 785 mx-live-usb-maker_26.04.1.dsc
+ 1f9f64fe2e0641d08c105b5118173821b51fbd398a7031af62c86a601ac75120 379196 mx-live-usb-maker_26.04.1.tar.xz
+ cd5eb13438bb6621243c2adf0323a97855cafea959d79413ba72c39a0433110c 10882 mx-live-usb-maker_26.04.1_source.buildinfo
+Files:
+ 813af7d678cbcb1df515c5d745e9eec0 785 admin optional mx-live-usb-maker_26.04.1.dsc
+ 7c928467bbc94b220e5a54ad7004a0b9 379196 admin optional mx-live-usb-maker_26.04.1.tar.xz
+ 257f35cef3a4428f60a19e28be997ee4 10882 admin optional mx-live-usb-maker_26.04.1_source.buildinfo
