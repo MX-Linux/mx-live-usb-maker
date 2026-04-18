@@ -381,7 +381,7 @@ void MainWindow::cleanup()
 
 QStringList MainWindow::buildUsbList()
 {
-    const QString drives = cmd.getOut("lsblk --nodeps -nlo NAME,SIZE,MODEL,VENDOR -I 3,8,22,179,259", Cmd::QuietMode::Yes).trimmed();
+    const QString drives = cmd.getOut("lsblk --nodeps -nlo NAME,SIZE,MODEL,VENDOR -I 3,8,22,179,202,252,253,254,259", Cmd::QuietMode::Yes).trimmed();
     return removeUnsuitable(drives.split('\n'));
 }
 

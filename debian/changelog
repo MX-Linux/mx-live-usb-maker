@@ -1,3 +1,9 @@
+mx-live-usb-maker (26.04) mx; urgency=medium
+
+  * Add virtual block device major numbers (202, 252, 253, 254)
+
+ -- fehlix <fehlix@mxlinux.org>  Sat, 18 Apr 2026 17:01:41 -0400
+
 mx-live-usb-maker (26.03) mx; urgency=medium
 
   * Show help documentation in the internal viewer
