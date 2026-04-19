@@ -27,6 +27,7 @@ ui_*.h
 Makefile*
 *-build-*
 build*
+CMakeLists.txt.user
 
 # QtCreator
 

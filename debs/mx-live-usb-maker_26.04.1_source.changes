@@ -1,0 +1,26 @@
+Format: 1.8
+Date: Sun, 19 Apr 2026 11:22:37 -0400
+Source: mx-live-usb-maker
+Architecture: source
+Version: 26.04.1
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: fehlix <fehlix@mxlinux.org>
+Changes:
+ mx-live-usb-maker (26.04.1) mx; urgency=medium
+ .
+   * Fix live-boot drive detection (use readAll instead of QTextStream)
+   * Support both /live/boot-dev and /run/initramfs/boot-dev
+Checksums-Sha1:
+ 93110e19c8ea72acc8ae1145ed83e6c71679e322 785 mx-live-usb-maker_26.04.1.dsc
+ 9e5a3e7850e96e5b4b146a15791d5700b524cc79 148256 mx-live-usb-maker_26.04.1.tar.xz
+ 32503677142d381ea4e91ac146608cb94ab2c47d 10882 mx-live-usb-maker_26.04.1_source.buildinfo
+Checksums-Sha256:
+ 0e463c162a446f830650928c245c15aae4f0a210fc68abe0c5f3fbd3eed73ebd 785 mx-live-usb-maker_26.04.1.dsc
+ 99eb728ae729ea92551f25141efd661e0860ee381ea5249d478ef10e07fbcfed 148256 mx-live-usb-maker_26.04.1.tar.xz
+ 55c33495831c45589c5225784389a1eb4e199203ea771917c2fbe6bb012ed036 10882 mx-live-usb-maker_26.04.1_source.buildinfo
+Files:
+ 7c0507f8b9a3bb42f8316709e4ba251c 785 admin optional mx-live-usb-maker_26.04.1.dsc
+ 118378eb09ebdcfdd52dbdcdd2c8dc19 148256 admin optional mx-live-usb-maker_26.04.1.tar.xz
+ a00efd5d2c592448ddc61220e09ad4b2 10882 admin optional mx-live-usb-maker_26.04.1_source.buildinfo
