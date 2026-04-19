@@ -1,3 +1,10 @@
+mx-live-usb-maker (26.04.1) mx; urgency=medium
+
+  * Fix live-boot drive detection (use readAll instead of QTextStream)
+  * Support both /live/boot-dev and /run/initramfs/boot-dev
+
+ -- fehlix <fehlix@mxlinux.org>  Sun, 19 Apr 2026 11:22:37 -0400
+
 mx-live-usb-maker (26.04) mx; urgency=medium
 
   * Add virtual block device major numbers (202, 252, 253, 254)

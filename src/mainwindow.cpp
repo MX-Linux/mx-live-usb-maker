@@ -517,7 +517,6 @@ QString MainWindow::getLiveDeviceName()
 {
     const QString cryptUuid = readInitrdParam("CRYPT_UUID");
     QString liveDevPath;
-
     if (!cryptUuid.isEmpty()) {
         QDir uuidDir("/dev/disk/by-uuid");
         if (uuidDir.exists()) {
@@ -534,11 +533,13 @@ QString MainWindow::getLiveDeviceName()
     if (liveDevPath.isEmpty()) {
         QFile mounts("/proc/mounts");
         if (mounts.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            QTextStream in(&mounts);
-            while (!in.atEnd()) {
-                const QString line = in.readLine();
+            const QString content = QString::fromUtf8(mounts.readAll());
+            mounts.close();
+            const QStringList bootDevPaths = {"/live/boot-dev", "/run/initramfs/boot-dev"};
+            const QStringList lines = content.split('\n', Qt::SkipEmptyParts);
+            for (const QString &line : lines) {
                 const QStringList parts = line.split(' ', Qt::SkipEmptyParts);
-                if (parts.size() > 1 && parts.at(1) == "/live/boot-dev") {
+                if (parts.size() > 1 && bootDevPaths.contains(parts.at(1))) {
                     liveDevPath = parts.at(0);
                     break;
                 }
