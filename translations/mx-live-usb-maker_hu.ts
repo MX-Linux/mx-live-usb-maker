@@ -68,8 +68,8 @@
     </message>
     <message>
         <location filename="../src/mainwindow.ui" line="745"/>
-        <location filename="../src/mainwindow.cpp" line="822"/>
-        <location filename="../src/mainwindow.cpp" line="845"/>
+        <location filename="../src/mainwindow.cpp" line="830"/>
+        <location filename="../src/mainwindow.cpp" line="853"/>
         <source>Select ISO</source>
         <translation>Válasszon ISO képfájlt</translation>
     </message>
@@ -190,7 +190,7 @@
     </message>
     <message>
         <location filename="../src/mainwindow.ui" line="755"/>
-        <location filename="../src/mainwindow.cpp" line="738"/>
+        <location filename="../src/mainwindow.cpp" line="746"/>
         <source>Show advanced options</source>
         <translation>Speciális lehetőségek megjelenítése</translation>
     </message>
@@ -270,9 +270,9 @@
         <translation>A jelenleg futó Live rendszer klónozása</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="576"/>
-        <location filename="../src/mainwindow.cpp" line="723"/>
-        <location filename="../src/mainwindow.cpp" line="951"/>
+        <location filename="../src/mainwindow.cpp" line="584"/>
+        <location filename="../src/mainwindow.cpp" line="731"/>
+        <location filename="../src/mainwindow.cpp" line="959"/>
         <source>Failure</source>
         <translation>Hiba</translation>
     </message>
@@ -282,27 +282,27 @@
         <translation>A forrás és a cél ugyanazon az eszközön van. Válassza ki újra.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="996"/>
+        <location filename="../src/mainwindow.cpp" line="1004"/>
         <source>Source Error</source>
         <translation>Forrás hiba</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="997"/>
+        <location filename="../src/mainwindow.cpp" line="1005"/>
         <source>Could not find the source linuxfs file.</source>
         <translation>Nem található a linuxfs forrásfájl.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1018"/>
+        <location filename="../src/mainwindow.cpp" line="1026"/>
         <source>Warning: The target device (%1) is smaller than the source (%2). The data might not fit. Do you want to continue?</source>
         <translation>Figyelmeztetés: A céleszköz (%1) kisebb, mint a forrás (%2). Az adatok nem férhetnek el. Folytatja?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1021"/>
+        <location filename="../src/mainwindow.cpp" line="1029"/>
         <source>Size Warning</source>
         <translation>Méret figyelmeztetés</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1029"/>
+        <location filename="../src/mainwindow.cpp" line="1037"/>
         <source>The target device %1 is larger than %2 GB.
 
 This may indicate you have selected the wrong device.
@@ -313,12 +313,12 @@ Ez arra utalhat, hogy rossz eszközt választott.
 Biztosan folytatja?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1036"/>
+        <location filename="../src/mainwindow.cpp" line="1044"/>
         <source>Large Target Device Warning</source>
         <translation>Nagy céleszköz figyelmeztetés</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="199"/>
+        <location filename="../src/mainwindow.cpp" line="200"/>
         <source>Writing %1 using 'dd' command to /dev/%2,
 
 Please wait until the process is completed</source>
@@ -327,37 +327,37 @@ Please wait until the process is completed</source>
 Várja meg a folyamat befejeződését</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="210"/>
+        <location filename="../src/mainwindow.cpp" line="215"/>
         <source>MX Live Usb Maker</source>
         <translation>MX Live-USB készítő</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="573"/>
+        <location filename="../src/mainwindow.cpp" line="581"/>
         <source>Success</source>
         <translation>Sikeres</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="573"/>
+        <location filename="../src/mainwindow.cpp" line="581"/>
         <source>LiveUSB creation successful!</source>
         <translation>LiveUSB készítése sikeres!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="576"/>
+        <location filename="../src/mainwindow.cpp" line="584"/>
         <source>Error encountered in the LiveUSB creation process</source>
         <translation>Hiba történt a LiveUSB létrehozása közben</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="642"/>
+        <location filename="../src/mainwindow.cpp" line="650"/>
         <source>Error</source>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="642"/>
+        <location filename="../src/mainwindow.cpp" line="650"/>
         <source>Please select a USB device to write to</source>
         <translation>Válasszon egy USB eszközt amelyre írni szeretne</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="648"/>
+        <location filename="../src/mainwindow.cpp" line="656"/>
         <source>Update mode is selected. The live system on %1 will be updated with the new ISO without reformatting the device.
 
 Existing data and persistence should remain, but please back up anything important.
@@ -366,7 +366,7 @@ Do you wish to continue?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="653"/>
+        <location filename="../src/mainwindow.cpp" line="661"/>
         <source>These actions will destroy all data on 
 
 </source>
@@ -375,85 +375,85 @@ Do you wish to continue?</source>
 </translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="653"/>
+        <location filename="../src/mainwindow.cpp" line="661"/>
         <source>Do you wish to continue?</source>
         <translation>Szeretné folytatni?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="686"/>
+        <location filename="../src/mainwindow.cpp" line="694"/>
         <source>About %1</source>
         <translation>%1 névjegye</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="687"/>
+        <location filename="../src/mainwindow.cpp" line="695"/>
         <source>Version: </source>
         <translation>Verzió:</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="689"/>
+        <location filename="../src/mainwindow.cpp" line="697"/>
         <source>Program for creating a live-usb from an iso-file, another live-usb, a live-cd/dvd, or a running live system.</source>
         <translation>LiveUSB létrehozására szolgáló program, egy ISO fájlból, másik LiveUSB-ről, Live CD/DVD-ről, vagy a futó Live rendszerről.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="692"/>
+        <location filename="../src/mainwindow.cpp" line="700"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="693"/>
+        <location filename="../src/mainwindow.cpp" line="701"/>
         <source>%1 License</source>
         <translation>%1 licenc</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="700"/>
+        <location filename="../src/mainwindow.cpp" line="708"/>
         <source>%1 Help</source>
         <translation>%1 Súgó</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="708"/>
+        <location filename="../src/mainwindow.cpp" line="716"/>
         <source>Select an ISO file to write to the USB drive</source>
         <translation>Válassza ki az ISO fájlt amelyet az USB eszközre kiír</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="709"/>
+        <location filename="../src/mainwindow.cpp" line="717"/>
         <source>ISO Files (*.iso);;All Files (*.*)</source>
         <translation>ISO fájlok (*.iso);Minden fájl (*.*)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="714"/>
-        <location filename="../src/mainwindow.cpp" line="817"/>
+        <location filename="../src/mainwindow.cpp" line="722"/>
+        <location filename="../src/mainwindow.cpp" line="825"/>
         <source>Select Source Directory</source>
         <translation>Válassza ki a forrás könyvtárat</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="723"/>
+        <location filename="../src/mainwindow.cpp" line="731"/>
         <source>Could not find linuxfs file</source>
         <translation>Nem található a linuxfs fájl</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="738"/>
+        <location filename="../src/mainwindow.cpp" line="746"/>
         <source>Hide advanced options</source>
         <translation>Speciális lehetőségek elrejtése</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="816"/>
-        <location filename="../src/mainwindow.cpp" line="835"/>
+        <location filename="../src/mainwindow.cpp" line="824"/>
+        <location filename="../src/mainwindow.cpp" line="843"/>
         <source>Select Source</source>
         <translation>Forrás kiválasztása</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="821"/>
-        <location filename="../src/mainwindow.cpp" line="843"/>
+        <location filename="../src/mainwindow.cpp" line="829"/>
+        <location filename="../src/mainwindow.cpp" line="851"/>
         <source>Select ISO file</source>
         <translation>ISO fájl kiválasztása</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="837"/>
+        <location filename="../src/mainwindow.cpp" line="845"/>
         <source>clone</source>
         <translation>klónozás</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="907"/>
+        <location filename="../src/mainwindow.cpp" line="915"/>
         <source>Could not find a log file at: </source>
         <translation>Nem található a napló fájl:</translation>
     </message>
@@ -462,22 +462,29 @@ Do you wish to continue?</source>
     <name>QObject</name>
     <message>
         <location filename="../src/about.cpp" line="74"/>
+        <location filename="../src/about.cpp" line="91"/>
+        <source>Could not load %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/about.cpp" line="120"/>
         <source>License</source>
         <translation>Licenc</translation>
     </message>
     <message>
-        <location filename="../src/about.cpp" line="75"/>
-        <location filename="../src/about.cpp" line="85"/>
+        <location filename="../src/about.cpp" line="121"/>
+        <location filename="../src/about.cpp" line="131"/>
         <source>Changelog</source>
         <translation>Változások listája</translation>
     </message>
     <message>
-        <location filename="../src/about.cpp" line="76"/>
+        <location filename="../src/about.cpp" line="122"/>
         <source>Cancel</source>
         <translation>Mégsem</translation>
     </message>
     <message>
-        <location filename="../src/about.cpp" line="99"/>
+        <location filename="../src/about.cpp" line="48"/>
+        <location filename="../src/about.cpp" line="145"/>
         <source>&amp;Close</source>
         <translation>&amp;Bezárás</translation>
     </message>

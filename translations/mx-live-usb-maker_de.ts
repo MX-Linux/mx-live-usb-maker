@@ -68,8 +68,8 @@
     </message>
     <message>
         <location filename="../src/mainwindow.ui" line="745"/>
-        <location filename="../src/mainwindow.cpp" line="822"/>
-        <location filename="../src/mainwindow.cpp" line="845"/>
+        <location filename="../src/mainwindow.cpp" line="830"/>
+        <location filename="../src/mainwindow.cpp" line="853"/>
         <source>Select ISO</source>
         <translation>ISO-Datei auswählen</translation>
     </message>
@@ -190,7 +190,7 @@
     </message>
     <message>
         <location filename="../src/mainwindow.ui" line="755"/>
-        <location filename="../src/mainwindow.cpp" line="738"/>
+        <location filename="../src/mainwindow.cpp" line="746"/>
         <source>Show advanced options</source>
         <translation>Zusatzoptionen anzeigen</translation>
     </message>
@@ -270,9 +270,9 @@
         <translation>Klonen eines laufenden Live-Systems</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="576"/>
-        <location filename="../src/mainwindow.cpp" line="723"/>
-        <location filename="../src/mainwindow.cpp" line="951"/>
+        <location filename="../src/mainwindow.cpp" line="584"/>
+        <location filename="../src/mainwindow.cpp" line="731"/>
+        <location filename="../src/mainwindow.cpp" line="959"/>
         <source>Failure</source>
         <translation>Fehlschlag</translation>
     </message>
@@ -282,27 +282,27 @@
         <translation>Quelle und Ziel befinden sich auf demselben Gerät; bitte Auswahl wiederholen.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="996"/>
+        <location filename="../src/mainwindow.cpp" line="1004"/>
         <source>Source Error</source>
         <translation>Fehler Datenquelle</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="997"/>
+        <location filename="../src/mainwindow.cpp" line="1005"/>
         <source>Could not find the source linuxfs file.</source>
         <translation>Die linuxfs Quelldatei konnte nicht gefunden werden.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1018"/>
+        <location filename="../src/mainwindow.cpp" line="1026"/>
         <source>Warning: The target device (%1) is smaller than the source (%2). The data might not fit. Do you want to continue?</source>
         <translation>Warning: Das Zielgerät (%1) ist kleiner als die Datenquelle (%2). Eventuell reicht die Kapazität nicht aus. Trotzdem weitermachen ?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1021"/>
+        <location filename="../src/mainwindow.cpp" line="1029"/>
         <source>Size Warning</source>
         <translation>Warnung wegen der Größe !</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1029"/>
+        <location filename="../src/mainwindow.cpp" line="1037"/>
         <source>The target device %1 is larger than %2 GB.
 
 This may indicate you have selected the wrong device.
@@ -312,12 +312,12 @@ Are you sure you want to proceed?</source>
 Das kann ein Hinweis auf eine Auswahl des falschen Geräts sein. Trotzdem weitermachen ?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1036"/>
+        <location filename="../src/mainwindow.cpp" line="1044"/>
         <source>Large Target Device Warning</source>
         <translation>Warnung wegen der Größe des Zielgeräts</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="199"/>
+        <location filename="../src/mainwindow.cpp" line="200"/>
         <source>Writing %1 using 'dd' command to /dev/%2,
 
 Please wait until the process is completed</source>
@@ -326,37 +326,37 @@ Please wait until the process is completed</source>
 Bitte auf Abschluss des Vorgangs warten</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="210"/>
+        <location filename="../src/mainwindow.cpp" line="215"/>
         <source>MX Live Usb Maker</source>
         <translation>MX Live-USB-Erzeugung</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="573"/>
+        <location filename="../src/mainwindow.cpp" line="581"/>
         <source>Success</source>
         <translation>Erfolg</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="573"/>
+        <location filename="../src/mainwindow.cpp" line="581"/>
         <source>LiveUSB creation successful!</source>
         <translation>LiveUSB-Erstellung erfolgreich!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="576"/>
+        <location filename="../src/mainwindow.cpp" line="584"/>
         <source>Error encountered in the LiveUSB creation process</source>
         <translation>Beim Erzeugen des Live-USB trat ein Fehler auf</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="642"/>
+        <location filename="../src/mainwindow.cpp" line="650"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="642"/>
+        <location filename="../src/mainwindow.cpp" line="650"/>
         <source>Please select a USB device to write to</source>
         <translation>Bitte wählen Sie ein USB-Gerät zum Schreiben aus</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="648"/>
+        <location filename="../src/mainwindow.cpp" line="656"/>
         <source>Update mode is selected. The live system on %1 will be updated with the new ISO without reformatting the device.
 
 Existing data and persistence should remain, but please back up anything important.
@@ -369,7 +369,7 @@ Existierende Daten und die Persistnez sollte unverändert bleiben, aber es wird 
 Jetzt weitermachen ?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="653"/>
+        <location filename="../src/mainwindow.cpp" line="661"/>
         <source>These actions will destroy all data on 
 
 </source>
@@ -378,85 +378,85 @@ Jetzt weitermachen ?</translation>
 </translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="653"/>
+        <location filename="../src/mainwindow.cpp" line="661"/>
         <source>Do you wish to continue?</source>
         <translation>Möchtest du fortfahren?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="686"/>
+        <location filename="../src/mainwindow.cpp" line="694"/>
         <source>About %1</source>
         <translation>Über %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="687"/>
+        <location filename="../src/mainwindow.cpp" line="695"/>
         <source>Version: </source>
         <translation>Version:</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="689"/>
+        <location filename="../src/mainwindow.cpp" line="697"/>
         <source>Program for creating a live-usb from an iso-file, another live-usb, a live-cd/dvd, or a running live system.</source>
         <translation>Programm zur LiveUSB-Erzeugung aus einer ISO-Datei, einem anderen LiveUSB-System, einer Live-CD/DVD oder einem laufenden Live-System.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="692"/>
+        <location filename="../src/mainwindow.cpp" line="700"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="693"/>
+        <location filename="../src/mainwindow.cpp" line="701"/>
         <source>%1 License</source>
         <translation>%1 Lizenz</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="700"/>
+        <location filename="../src/mainwindow.cpp" line="708"/>
         <source>%1 Help</source>
         <translation>%1 Hilfe</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="708"/>
+        <location filename="../src/mainwindow.cpp" line="716"/>
         <source>Select an ISO file to write to the USB drive</source>
         <translation>Auswahl der auf das USB-Laufwerk zu schreibenden ISO-Datei</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="709"/>
+        <location filename="../src/mainwindow.cpp" line="717"/>
         <source>ISO Files (*.iso);;All Files (*.*)</source>
         <translation>ISO Dateien (*.iso);;Alle Dateien (*.*)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="714"/>
-        <location filename="../src/mainwindow.cpp" line="817"/>
+        <location filename="../src/mainwindow.cpp" line="722"/>
+        <location filename="../src/mainwindow.cpp" line="825"/>
         <source>Select Source Directory</source>
         <translation>Quellverzeichnis auswählen</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="723"/>
+        <location filename="../src/mainwindow.cpp" line="731"/>
         <source>Could not find linuxfs file</source>
         <translation>Kann nicht finden linuxfs-Datei</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="738"/>
+        <location filename="../src/mainwindow.cpp" line="746"/>
         <source>Hide advanced options</source>
         <translation>Erweiterte Optionen ausblenden</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="816"/>
-        <location filename="../src/mainwindow.cpp" line="835"/>
+        <location filename="../src/mainwindow.cpp" line="824"/>
+        <location filename="../src/mainwindow.cpp" line="843"/>
         <source>Select Source</source>
         <translation>Quelle auswählen</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="821"/>
-        <location filename="../src/mainwindow.cpp" line="843"/>
+        <location filename="../src/mainwindow.cpp" line="829"/>
+        <location filename="../src/mainwindow.cpp" line="851"/>
         <source>Select ISO file</source>
         <translation>ISO-Datei auswählen</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="837"/>
+        <location filename="../src/mainwindow.cpp" line="845"/>
         <source>clone</source>
         <translation>Klonen</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="907"/>
+        <location filename="../src/mainwindow.cpp" line="915"/>
         <source>Could not find a log file at: </source>
         <translation>Konnte keine Protokolldatei finden in:</translation>
     </message>
@@ -465,22 +465,29 @@ Jetzt weitermachen ?</translation>
     <name>QObject</name>
     <message>
         <location filename="../src/about.cpp" line="74"/>
+        <location filename="../src/about.cpp" line="91"/>
+        <source>Could not load %1</source>
+        <translation>%1 konnte nicht geladen werden.</translation>
+    </message>
+    <message>
+        <location filename="../src/about.cpp" line="120"/>
         <source>License</source>
         <translation>Lizenz</translation>
     </message>
     <message>
-        <location filename="../src/about.cpp" line="75"/>
-        <location filename="../src/about.cpp" line="85"/>
+        <location filename="../src/about.cpp" line="121"/>
+        <location filename="../src/about.cpp" line="131"/>
         <source>Changelog</source>
         <translation>Änderungsprotokoll</translation>
     </message>
     <message>
-        <location filename="../src/about.cpp" line="76"/>
+        <location filename="../src/about.cpp" line="122"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
     <message>
-        <location filename="../src/about.cpp" line="99"/>
+        <location filename="../src/about.cpp" line="48"/>
+        <location filename="../src/about.cpp" line="145"/>
         <source>&amp;Close</source>
         <translation>&amp;Schließen</translation>
     </message>

@@ -68,8 +68,8 @@
     </message>
     <message>
         <location filename="../src/mainwindow.ui" line="745"/>
-        <location filename="../src/mainwindow.cpp" line="822"/>
-        <location filename="../src/mainwindow.cpp" line="845"/>
+        <location filename="../src/mainwindow.cpp" line="830"/>
+        <location filename="../src/mainwindow.cpp" line="853"/>
         <source>Select ISO</source>
         <translation>आईएसओ चुनें</translation>
     </message>
@@ -190,7 +190,7 @@
     </message>
     <message>
         <location filename="../src/mainwindow.ui" line="755"/>
-        <location filename="../src/mainwindow.cpp" line="738"/>
+        <location filename="../src/mainwindow.cpp" line="746"/>
         <source>Show advanced options</source>
         <translation>विस्तृत विकल्प दिखाएँ</translation>
     </message>
@@ -270,9 +270,9 @@
         <translation>कार्यरत लाइव सिस्टम प्रतिरूपित करें</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="576"/>
-        <location filename="../src/mainwindow.cpp" line="723"/>
-        <location filename="../src/mainwindow.cpp" line="951"/>
+        <location filename="../src/mainwindow.cpp" line="584"/>
+        <location filename="../src/mainwindow.cpp" line="731"/>
+        <location filename="../src/mainwindow.cpp" line="959"/>
         <source>Failure</source>
         <translation>विफल</translation>
     </message>
@@ -282,27 +282,27 @@
         <translation>स्रोत व लक्ष्य समान उपकरण पर हैं, कृपया पुनः चयन करें।</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="996"/>
+        <location filename="../src/mainwindow.cpp" line="1004"/>
         <source>Source Error</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="997"/>
+        <location filename="../src/mainwindow.cpp" line="1005"/>
         <source>Could not find the source linuxfs file.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1018"/>
+        <location filename="../src/mainwindow.cpp" line="1026"/>
         <source>Warning: The target device (%1) is smaller than the source (%2). The data might not fit. Do you want to continue?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1021"/>
+        <location filename="../src/mainwindow.cpp" line="1029"/>
         <source>Size Warning</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1029"/>
+        <location filename="../src/mainwindow.cpp" line="1037"/>
         <source>The target device %1 is larger than %2 GB.
 
 This may indicate you have selected the wrong device.
@@ -310,49 +310,49 @@ Are you sure you want to proceed?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1036"/>
+        <location filename="../src/mainwindow.cpp" line="1044"/>
         <source>Large Target Device Warning</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="199"/>
+        <location filename="../src/mainwindow.cpp" line="200"/>
         <source>Writing %1 using 'dd' command to /dev/%2,
 
 Please wait until the process is completed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="210"/>
+        <location filename="../src/mainwindow.cpp" line="215"/>
         <source>MX Live Usb Maker</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="573"/>
+        <location filename="../src/mainwindow.cpp" line="581"/>
         <source>Success</source>
         <translation>सफलता</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="573"/>
+        <location filename="../src/mainwindow.cpp" line="581"/>
         <source>LiveUSB creation successful!</source>
         <translation>लाइव यूएसबी सृजन सफल!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="576"/>
+        <location filename="../src/mainwindow.cpp" line="584"/>
         <source>Error encountered in the LiveUSB creation process</source>
         <translation>लाइव यूएसबी सृजन प्रक्रिया में त्रुटि हुई</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="642"/>
+        <location filename="../src/mainwindow.cpp" line="650"/>
         <source>Error</source>
         <translation>त्रुटि</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="642"/>
+        <location filename="../src/mainwindow.cpp" line="650"/>
         <source>Please select a USB device to write to</source>
         <translation>राइट हेतु यूएसबी उपकरण चुनें</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="648"/>
+        <location filename="../src/mainwindow.cpp" line="656"/>
         <source>Update mode is selected. The live system on %1 will be updated with the new ISO without reformatting the device.
 
 Existing data and persistence should remain, but please back up anything important.
@@ -361,7 +361,7 @@ Do you wish to continue?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="653"/>
+        <location filename="../src/mainwindow.cpp" line="661"/>
         <source>These actions will destroy all data on 
 
 </source>
@@ -370,85 +370,85 @@ Do you wish to continue?</source>
 </translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="653"/>
+        <location filename="../src/mainwindow.cpp" line="661"/>
         <source>Do you wish to continue?</source>
         <translation>क्या आप जारी रखना चाहते हैं?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="686"/>
+        <location filename="../src/mainwindow.cpp" line="694"/>
         <source>About %1</source>
         <translation>%1 के बारे में</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="687"/>
+        <location filename="../src/mainwindow.cpp" line="695"/>
         <source>Version: </source>
         <translation>संस्करण :</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="689"/>
+        <location filename="../src/mainwindow.cpp" line="697"/>
         <source>Program for creating a live-usb from an iso-file, another live-usb, a live-cd/dvd, or a running live system.</source>
         <translation>आईएसओ फाइल, अन्य लाइव यूएसबी, लाइव सीडी/डीवीडी या कार्यरत लाइव सिस्टम से लाइव यूएसबी बनाने हेतु प्रोग्राम।</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="692"/>
+        <location filename="../src/mainwindow.cpp" line="700"/>
         <source>Copyright (c) MX Linux</source>
         <translation>कॉपीराइट (c) एमएक्स लिनक्स</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="693"/>
+        <location filename="../src/mainwindow.cpp" line="701"/>
         <source>%1 License</source>
         <translation>%1 लाइसेंस</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="700"/>
+        <location filename="../src/mainwindow.cpp" line="708"/>
         <source>%1 Help</source>
         <translation>%1 सहायता</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="708"/>
+        <location filename="../src/mainwindow.cpp" line="716"/>
         <source>Select an ISO file to write to the USB drive</source>
         <translation>यूएसबी ड्राइव पर राइट करने हेतु आईएसओ फाइल चुनें</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="709"/>
+        <location filename="../src/mainwindow.cpp" line="717"/>
         <source>ISO Files (*.iso);;All Files (*.*)</source>
         <translation>आईएसओ फाइलें (*.iso);;सभी फाइलें (*.*)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="714"/>
-        <location filename="../src/mainwindow.cpp" line="817"/>
+        <location filename="../src/mainwindow.cpp" line="722"/>
+        <location filename="../src/mainwindow.cpp" line="825"/>
         <source>Select Source Directory</source>
         <translation>स्रोत डायरेक्टरी चुनें</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="723"/>
+        <location filename="../src/mainwindow.cpp" line="731"/>
         <source>Could not find linuxfs file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="738"/>
+        <location filename="../src/mainwindow.cpp" line="746"/>
         <source>Hide advanced options</source>
         <translation>विस्तृत विकल्प अदृश्य करें</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="816"/>
-        <location filename="../src/mainwindow.cpp" line="835"/>
+        <location filename="../src/mainwindow.cpp" line="824"/>
+        <location filename="../src/mainwindow.cpp" line="843"/>
         <source>Select Source</source>
         <translation>स्रोत चयन</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="821"/>
-        <location filename="../src/mainwindow.cpp" line="843"/>
+        <location filename="../src/mainwindow.cpp" line="829"/>
+        <location filename="../src/mainwindow.cpp" line="851"/>
         <source>Select ISO file</source>
         <translation>आईएसओ फाइल चयन</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="837"/>
+        <location filename="../src/mainwindow.cpp" line="845"/>
         <source>clone</source>
         <translation>प्रतिरूप</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="907"/>
+        <location filename="../src/mainwindow.cpp" line="915"/>
         <source>Could not find a log file at: </source>
         <translation type="unfinished"/>
     </message>
@@ -457,22 +457,29 @@ Do you wish to continue?</source>
     <name>QObject</name>
     <message>
         <location filename="../src/about.cpp" line="74"/>
+        <location filename="../src/about.cpp" line="91"/>
+        <source>Could not load %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/about.cpp" line="120"/>
         <source>License</source>
         <translation>लाइसेंस</translation>
     </message>
     <message>
-        <location filename="../src/about.cpp" line="75"/>
-        <location filename="../src/about.cpp" line="85"/>
+        <location filename="../src/about.cpp" line="121"/>
+        <location filename="../src/about.cpp" line="131"/>
         <source>Changelog</source>
         <translation>बदलाव सूची</translation>
     </message>
     <message>
-        <location filename="../src/about.cpp" line="76"/>
+        <location filename="../src/about.cpp" line="122"/>
         <source>Cancel</source>
         <translation>रद्द करें</translation>
     </message>
     <message>
-        <location filename="../src/about.cpp" line="99"/>
+        <location filename="../src/about.cpp" line="48"/>
+        <location filename="../src/about.cpp" line="145"/>
         <source>&amp;Close</source>
         <translation>बंद करें (&amp;C)</translation>
     </message>
