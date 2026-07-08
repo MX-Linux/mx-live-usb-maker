@@ -4,55 +4,12 @@ on:
   push:
     tags-ignore:
       - '*arch*'
+      - '*Arch*'
+      - '*ARCH*'
 
 jobs:
   create-release:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Get Latest Changelog Entry
-        id: get-changelog
-        run: |
-          changelog=$(awk '
-              BEGIN { changes = ""; release_found = 0; in_changes = 0 }
-              /^'${{ github.event.repository.name }}'/ {
-                  if (release_found == 1) exit
-                  release_found = 1
-                  next
-              }
-              release_found == 1 && /^\s*\*/ {
-                  in_changes = 1
-              }
-              release_found == 1 && in_changes == 1 {
-                  if ($0 ~ /^\s*\*/) {
-                      changes = changes $0 "\n"
-                  } else if ($0 ~ /^\s+/) {
-                      changes = changes $0 "\n"
-                  } else {
-                      exit
-                  }
-              }
-              END { print changes }
-          ' debian/changelog)
-          echo "changelog<<EOF" >> $GITHUB_ENV
-          echo "$changelog" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-
-      - name: Create Release
-        id: create_release
-        uses: ncipollo/release-action@v1
-        with:
-          name: Release ${{ github.ref_name }}
-          body: |
-            ### Automated release created for tag *${{ github.ref_name }}*
-             - Direct download link: [![build service](https://build.opensuse.org/projects/home:mx-packaging/packages/${{ github.event.repository.name }}/badge.svg?type=default)](https://software.opensuse.org//download.html?project=home%3Amx-packaging&package=${{ github.event.repository.name }})
-             - In repos: [![latest packaged version](https://repology.org/badge/latest-versions/${{ github.event.repository.name }}.svg)](https://repology.org/project/${{ github.event.repository.name }}/versions)
-
-            ### Changelog
-            ${{ env.changelog }}
-
-          draft: false
-          prerelease: false
+    uses: MX-Linux/.github/.github/workflows/release.yaml@main
+    secrets: inherit
+    permissions:
+      contents: write
