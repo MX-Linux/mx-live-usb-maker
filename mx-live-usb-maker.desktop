@@ -147,6 +147,6 @@ Exec=mx-live-usb-maker
 Terminal=false
 Type=Application
 Icon=mx-live-usb-maker
-Categories=System;MX-Live;
+Categories=System;X-MX-Live;
 NoDisplay=false
 MimeType=application/x-cd-image;
