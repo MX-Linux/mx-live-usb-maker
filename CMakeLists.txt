@@ -80,6 +80,20 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
+# Absolute directory where the privileged helper binary is installed.
+set(HELPER_INSTALL_DIR "/usr/libexec/mx-live-usb-maker" CACHE PATH
+    "Absolute install directory for the privileged helper binary")
+if(NOT IS_ABSOLUTE "${HELPER_INSTALL_DIR}")
+    message(FATAL_ERROR "HELPER_INSTALL_DIR must be an absolute path, got: ${HELPER_INSTALL_DIR}")
+endif()
+set(HELPER_PATH "${HELPER_INSTALL_DIR}/helper")
+
+configure_file(
+    scripts/org.mxlinux.pkexec.mxlum-helper.policy.in
+    ${CMAKE_BINARY_DIR}/org.mxlinux.pkexec.mxlum-helper.policy
+    @ONLY
+)
+
 # Define source files
 set(SOURCES
     src/main.cpp
@@ -165,6 +179,10 @@ endif()
 
 # Set compile definitions
 target_compile_definitions(mx-live-usb-maker PRIVATE
+    HELPER_PATH="${HELPER_PATH}"
+)
+
+target_compile_definitions(mx-live-usb-maker PRIVATE
     QT_DEPRECATED_WARNINGS
     QT_DISABLE_DEPRECATED_BEFORE=0x060000
     VERSION="${PROJECT_VERSION}"
@@ -216,5 +234,5 @@ install(TARGETS mx-live-usb-maker
 )
 
 install(TARGETS helper
-    RUNTIME DESTINATION lib/mx-live-usb-maker
+    RUNTIME DESTINATION ${HELPER_INSTALL_DIR}
 )

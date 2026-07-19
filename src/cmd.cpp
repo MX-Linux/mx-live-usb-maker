@@ -12,7 +12,7 @@
 Cmd::Cmd(QObject *parent)
     : QProcess(parent),
       elevationCommand {elevationTool()},
-      helperPath {"/usr/lib/" + QApplication::applicationName() + "/helper"}
+      helperPath {QStringLiteral(HELPER_PATH)}
 {
 }
 
