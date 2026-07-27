@@ -1,7 +1,7 @@
 /**********************************************************************
  *
  **********************************************************************
- * Copyright (C) 2023-2024 MX Authors
+ * Copyright (C) 2023-2026 MX Authors
  *
  * Authors: Adrian <adrian@mxlinux.org>
  *          MX Linux <http://mxlinux.org>
