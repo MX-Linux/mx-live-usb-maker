@@ -1,0 +1,15 @@
+name: Create Release
+
+on:
+  push:
+    tags-ignore:
+      - '*arch*'
+      - '*Arch*'
+      - '*ARCH*'
+
+jobs:
+  create-release:
+    uses: MX-Linux/.github/.github/workflows/release.yaml@main
+    secrets: inherit
+    permissions:
+      contents: write
