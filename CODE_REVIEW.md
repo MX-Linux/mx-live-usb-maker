@@ -18,5 +18,5 @@
 4. - [x] **Error dialog drops the failing path due to missing placeholder** — `src/mainwindow.cpp:732`
    `QMessageBox::critical(this, tr("Failure"), tr("Could not find linuxfs file").arg(selected));` — the translated string `"Could not find linuxfs file"` has no `%1` placeholder, so `.arg(selected)` is a no-op and the user is never shown which directory was selected. Add a placeholder, e.g. `tr("Could not find linuxfs file in %1").arg(selected)`.
 
-5. - [ ] **Unused member variable `elevate`** — `src/mainwindow.h:80`
+5. - [x] **Unused member variable `elevate`** — `src/mainwindow.h:80`
    `QString elevate;` is declared as a private member of `MainWindow` but never referenced anywhere in the codebase. It was presumably left over from an earlier iteration that stored the elevation tool path in the class; now elevation is handled entirely by `Cmd::elevationTool()`/`Cmd::procAsRoot()`. Remove the declaration to avoid confusion and dead-data overhead.

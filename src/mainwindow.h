@@ -77,7 +77,6 @@ private:
     Cmd cmd;
     QString LUM;
     QString device;
-    QString elevate;
     QTimer timer;
     bool advancedOptions {};
     int defaultHeight {};
