@@ -733,7 +733,7 @@ void MainWindow::pushSelectSource_clicked()
             if (selected == '/') {
                 selected.clear();
             }
-            QMessageBox::critical(this, tr("Failure"), tr("Could not find linuxfs file").arg(selected));
+            QMessageBox::critical(this, tr("Failure"), tr("Could not find linuxfs file in %1").arg(selected));
         }
     }
 }
