@@ -151,10 +151,16 @@ void MainWindow::makeUsb(const QStringList &options)
     QString sourceSize;
 
     if (!ui->checkCloneLive->isChecked() && !ui->checkCloneMode->isChecked()) {
-        sourceSize = cmd.getOut(QString("du -m \"%1\" 2>/dev/null | cut -f1").arg(source), Cmd::QuietMode::Yes);
+        QString output;
+        cmd.proc(QStringLiteral("du"), {"-m", "--", source}, &output, nullptr, Cmd::QuietMode::Yes);
+        sourceSize = output.section('\t', 0, 0).trimmed();
     } else if (ui->checkCloneMode->isChecked()) {
-        sourceSize = cmd.getOut(QString("du -m --summarize \"%1\" 2>/dev/null | cut -f1").arg(source), Cmd::QuietMode::Yes);
-        QString rootPartition = cmd.getOut(QString("df --output=source \"%1\" | awk 'END{print $1}'").arg(source));
+        QString output;
+        cmd.proc(QStringLiteral("du"), {"-m", "--summarize", "--", source}, &output, nullptr, Cmd::QuietMode::Yes);
+        sourceSize = output.section('\t', 0, 0).trimmed();
+
+        cmd.proc(QStringLiteral("df"), {"--output=source", "--", source}, &output, nullptr, Cmd::QuietMode::Yes);
+        const QString rootPartition = output.trimmed().section('\n', -1).simplified().section(' ', 0, 0);
         source = "clone=" + source;
         if ("/dev/" + device == getDrivePath(rootPartition)) {
             showErrorAndReset(tr("Source and destination are on the same device, please select again."));
@@ -992,8 +998,10 @@ quint64 MainWindow::calculateSourceSize()
             const QFileInfo info(linuxfsPath);
             if (info.isDir()) {
                 // For directories, get used space via df command
-                const QString cmdStr = QString("df --output=used -B1 \"%1\" | tail -1").arg(linuxfsPath);
-                const QString usedStr = cmd.getOut(cmdStr, Cmd::QuietMode::Yes).trimmed();
+                QString output;
+                cmd.proc(QStringLiteral("df"), {"--output=used", "-B1", "--", linuxfsPath}, &output, nullptr,
+                         Cmd::QuietMode::Yes);
+                const QString usedStr = output.trimmed().section('\n', -1).trimmed();
                 bool ok = false;
                 const quint64 sourceSizeBytes = usedStr.toULongLong(&ok);
                 return ok ? sourceSizeBytes : 0;
