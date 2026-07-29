@@ -902,11 +902,11 @@ void MainWindow::radioNormal_clicked()
 bool MainWindow::isantiX_mx_family(const QString &selected)
 {
     Cmd process;
-    QString output;
     const bool completed = process.proc(QStringLiteral("xorriso"),
                                         {"-indev", selected, "-find", "/antiX", "-name", "linuxfs", "-prune"},
-                                        &output, nullptr, Cmd::QuietMode::Yes);
-    return completed && output.split('\n').contains(QStringLiteral("/antiX/linuxfs"));
+                                        nullptr, nullptr, Cmd::QuietMode::Yes);
+    const QString output = QString::fromUtf8(process.readAllStandardOutput());
+    return completed && output.contains(QStringLiteral("/antiX/linuxfs"));
 }
 
 void MainWindow::pushLumLogFile_clicked()
