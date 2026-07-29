@@ -39,6 +39,9 @@ if command -v tx >/dev/null; then
    echodo tx pull -r antix-development.$APPNAME --all
 fi
 
+# en_US duplicates the English source catalog and should not be shipped.
+rm -f "${APPNAME}_en_US.ts"
+
 # Find lupdate command in common locations
 LUPDATE=""
 for cmd in lupdate lupdate-qt6 /usr/lib/qt6/bin/lupdate /usr/bin/lupdate /usr/local/bin/lupdate; do
