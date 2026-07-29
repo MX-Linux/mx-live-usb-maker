@@ -897,10 +897,12 @@ void MainWindow::radioNormal_clicked()
 
 bool MainWindow::isantiX_mx_family(const QString &selected)
 {
-    return Cmd().run(
-        QStringLiteral("xorriso -indev '%1' -find /antiX -name linuxfs -prune  2>/dev/null | grep -q /antiX/linuxfs")
-            .arg(selected),
-        Cmd::QuietMode::Yes);
+    Cmd process;
+    QString output;
+    const bool completed = process.proc(QStringLiteral("xorriso"),
+                                        {"-indev", selected, "-find", "/antiX", "-name", "linuxfs", "-prune"},
+                                        &output, nullptr, Cmd::QuietMode::Yes);
+    return completed && output.split('\n').contains(QStringLiteral("/antiX/linuxfs"));
 }
 
 void MainWindow::pushLumLogFile_clicked()
