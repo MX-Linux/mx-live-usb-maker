@@ -48,14 +48,12 @@ MainWindow::MainWindow(const QStringList &args, QDialog *parent)
     setGeneralConnections();
 
     // Setup options
-    const QString defaultLum = "live-usb-maker";
     QSettings settings("/etc/mx-live-usb-maker/mx-live-usb-maker.conf", QSettings::NativeFormat);
-    QString lumName = settings.value("LUM", defaultLum).toString();
 
     // Try /usr/local/bin first, then fall back to /usr/bin
-    LUM = "/usr/local/bin/" + lumName;
+    LUM = QStringLiteral("/usr/local/bin/live-usb-maker");
     if (!QFile::exists(LUM)) {
-        LUM = "/usr/bin/" + lumName;
+        LUM = QStringLiteral("/usr/bin/live-usb-maker");
     }
     qDebug() << "LUM is:" << LUM;
 
