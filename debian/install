@@ -5,4 +5,4 @@ mx-live-usb-maker.svg		usr/share/icons/hicolor/scalable/apps
 authors.txt			usr/share/doc/mx-live-usb-maker
 help/*				usr/share/doc/mx-live-usb-maker
 obj-*/*.qm			usr/share/mx-live-usb-maker/locale
-scripts/org.mxlinux.pkexec.mxlum-helper.policy usr/share/polkit-1/actions
+obj-*/org.mxlinux.pkexec.mxlum-helper.policy	usr/share/polkit-1/actions
