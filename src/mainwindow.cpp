@@ -613,11 +613,12 @@ QString MainWindow::getLiveDeviceName()
     if (liveDevPath.isEmpty()) {
         QFile mounts(SystemPaths::PROC_MOUNTS);
         if (mounts.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            static const QStringList bootDevPaths = {"/live/boot-dev", "/run/initramfs/boot-dev"};
             QTextStream in(&mounts);
             while (!in.atEnd()) {
                 const QString line = in.readLine();
                 const auto parts = line.split(' ', Qt::SkipEmptyParts);
-                if (parts.size() > 1 && parts.at(1) == "/live/boot-dev") {
+                if (parts.size() > 1 && bootDevPaths.contains(parts.at(1))) {
                     liveDevPath = parts.at(0);
                     break;
                 }
@@ -641,7 +642,7 @@ QStringList MainWindow::removeUnsuitable(const QStringList &devices)
         = cmd.getOut("lsblk -nlso NAME,PKNAME,TYPE $(findmnt / -no SOURCE)", Cmd::QuietMode::Yes).trimmed();
     // Validate lsblk output format (3 columns: NAME, PKNAME, TYPE)
     if (!ValidationUtils::validateLsblkColumns(lsblkOutput, 3)) {
-        // Invalid lsblk output format for root device - expected at least 3 columns
+        qWarning() << "Invalid lsblk output format for root device - expected at least 3 columns";
     }
     // Extract root drive name from validated output
     const QString rootDrive = lsblkOutput.split('\n')
