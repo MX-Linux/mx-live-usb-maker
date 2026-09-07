@@ -500,7 +500,7 @@ void MainWindow::cleanup()
 
 QStringList MainWindow::buildUsbList()
 {
-    const QString drives = cmd.getOut("lsblk --nodeps -nlo NAME,SIZE,MODEL,VENDOR -I 3,8,22,179,259", Cmd::QuietMode::Yes).trimmed();
+    const QString drives = cmd.getOut("lsblk --nodeps -nlo NAME,SIZE,MODEL,VENDOR -I 3,8,22,179,202,252,253,254,259", Cmd::QuietMode::Yes).trimmed();
     // Validate that lsblk output has at least NAME and SIZE columns (MODEL/VENDOR can be empty)
     if (!ValidationUtils::validateLsblkColumns(drives, 2)) {
         qDebug() << "Invalid lsblk output format - expected at least 2 columns";
