@@ -29,6 +29,7 @@
 #include <QRegularExpression>
 #include <QTextStream>
 #include <QSet>
+#include <QStandardPaths>
 
 #include "common.h"
 #include "liveusbmaker_backend.h"
@@ -1750,7 +1751,13 @@ bool LiveUsbMakerBackend::makeFs(const QString &device, const QString &type, con
         args << QStringLiteral("--fast") << QStringLiteral("-L") << label;
     }
     args << device;
-    if (!runCommand(QStringLiteral("mkfs.") + fs, args, error)) {
+    QString program = QStringLiteral("mkfs.") + fs;
+    // Fall back to mkntfs for NTFS tool packages that don't ship the mkfs.ntfs link
+    if (fs == QLatin1String("ntfs") && QStandardPaths::findExecutable(program).isEmpty()
+        && !QStandardPaths::findExecutable(QStringLiteral("mkntfs")).isEmpty()) {
+        program = QStringLiteral("mkntfs");
+    }
+    if (!runCommand(program, args, error)) {
         return false;
     }
     runCommand(QStringLiteral("partprobe"), {device}, error, true);

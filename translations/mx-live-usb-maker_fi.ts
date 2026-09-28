@@ -2,6 +2,11 @@
 <context>
     <name>MainWindow</name>
     <message>
+        <location filename="../src/mainwindow.cpp" line="300"/>
+        <source>Install ntfs-3g to format the data partition as NTFS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/mainwindow.ui" line="14"/>
         <source>Program_Name</source>
         <translation>Ohjelman_Nimi</translation>

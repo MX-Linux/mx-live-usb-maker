@@ -26,6 +26,8 @@
 #include <QFileInfo>
 #include <QRegularExpression>
 #include <QScrollBar>
+#include <QStandardItemModel>
+#include <QStandardPaths>
 #include <QStorageInfo>
 #include <QTextStream>
 
@@ -282,6 +284,22 @@ void MainWindow::setup()
     ui->comboBoxDataFormat->setVisible(dataFirstAvailable);
     ui->labelFormat->setVisible(dataFirstAvailable);
     ui->spinBoxDataSize->setVisible(dataFirstAvailable);
+
+    // NTFS formatting needs mkfs.ntfs (ntfs-3g or ntfsprogs-plus), which is an optional dependency
+    const QStringList toolPaths {"/usr/sbin", "/sbin", "/usr/bin", "/bin"};
+    const auto hasTool = [&toolPaths](const QString &name) {
+        return !QStandardPaths::findExecutable(name).isEmpty()
+               || !QStandardPaths::findExecutable(name, toolPaths).isEmpty();
+    };
+    if (!hasTool("mkfs.ntfs") && !hasTool("mkntfs")) {
+        const int ntfsIndex = ui->comboBoxDataFormat->findText("ntfs");
+        auto *model = qobject_cast<QStandardItemModel *>(ui->comboBoxDataFormat->model());
+        if (model && ntfsIndex >= 0) {
+            QStandardItem *item = model->item(ntfsIndex);
+            item->setEnabled(false);
+            item->setToolTip(tr("Install ntfs-3g to format the data partition as NTFS"));
+        }
+    }
 
     // Disable by default and enable only when checking the box
     ui->comboBoxDataFormat->setEnabled(false);

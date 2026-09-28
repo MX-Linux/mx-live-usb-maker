@@ -13,7 +13,6 @@ depends=(
     'dosfstools'
     'e2fsprogs'
     'exfatprogs'
-    'ntfs-3g'
     'xorriso'
     'rsync'
     'syslinux'
@@ -22,6 +21,7 @@ depends=(
     'util-linux'
     'libarchive'
 )
+optdepends=('ntfs-3g: format the data partition as NTFS')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=()
 sha256sums=()
