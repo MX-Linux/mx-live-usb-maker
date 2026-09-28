@@ -1810,6 +1810,14 @@ bool LiveUsbMakerBackend::mountDevice(const QString &device, const QString &moun
         args << QStringLiteral("-t") << fsType;
     }
     args << device << mountPoint;
+    // Without ntfs-3g or a driver registering the "ntfs" alias, only the ntfs3 type may be available
+    if (fsType == QLatin1String("ntfs")) {
+        if (runCommand(QStringLiteral("mount"), args, nullptr)) {
+            return true;
+        }
+        logLine(QStringLiteral("Retrying mount with ntfs3 driver."));
+        args[1] = QStringLiteral("ntfs3");
+    }
     return runCommand(QStringLiteral("mount"), args, error);
 }
 
