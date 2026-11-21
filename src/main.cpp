@@ -30,6 +30,8 @@
 #include <QStandardPaths>
 #include <QTranslator>
 
+#include <memory>
+
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -47,23 +49,30 @@ void messageHandler(QtMsgType type, const QMessageLogContext &context, const QSt
 
 int main(int argc, char *argv[])
 {
-    if (getuid() == 0) {
-        qputenv("XDG_RUNTIME_DIR", "/run/user/0");
-        qunsetenv("SESSION_MANAGER");
-    }
-    // Set Qt platform to XCB (X11) if not already set and we're in X11 environment
-    if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORM")) {
-        if (!qEnvironmentVariableIsEmpty("DISPLAY") && qEnvironmentVariableIsEmpty("WAYLAND_DISPLAY")) {
+    const QByteArray option = argc == 2 ? QByteArray(argv[1]) : QByteArray();
+    const bool informational = option == "-h" || option == "--help" || option == "--help-all"
+                               || option == "-v" || option == "--version";
+    std::unique_ptr<QCoreApplication> app;
+    if (informational) {
+        app = std::make_unique<QCoreApplication>(argc, argv);
+    } else {
+        if (getuid() == 0) {
+            qputenv("XDG_RUNTIME_DIR", "/run/user/0");
+            qunsetenv("SESSION_MANAGER");
+        }
+        // Set Qt platform to XCB (X11) if not already set and we're in X11 environment
+        if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORM") && !qEnvironmentVariableIsEmpty("DISPLAY")
+            && qEnvironmentVariableIsEmpty("WAYLAND_DISPLAY")) {
             qputenv("QT_QPA_PLATFORM", "xcb");
+        }
+
+        app = std::make_unique<QApplication>(argc, argv);
+        if (getuid() == 0) {
+            qputenv("HOME", SystemPaths::ROOT_HOME.toUtf8());
         }
     }
 
-    QApplication app(argc, argv);
-    if (getuid() == 0) {
-        qputenv("HOME", SystemPaths::ROOT_HOME.toUtf8());
-    }
     QApplication::setApplicationVersion(VERSION);
-    QApplication::setDesktopFileName("mx-live-usb-maker");
 
     QCommandLineParser parser;
     parser.setApplicationDescription(
@@ -73,7 +82,7 @@ int main(int argc, char *argv[])
     parser.addVersionOption();
     parser.addPositionalArgument(QObject::tr("filename"), QObject::tr("Name of .iso file to open"),
                                  QObject::tr("[filename]"));
-    parser.parse(app.arguments());
+    parser.parse(app->arguments());
     if (parser.isSet("help")) {
         QTextStream out(stdout);
         out << parser.helpText()
@@ -84,10 +93,15 @@ int main(int argc, char *argv[])
             << "  disablestore   Disable storage for the current boot session only.\n";
         return 0;
     }
+    if (parser.isSet("help-all")) {
+        parser.process(*app);
+    }
     if (parser.isSet("version")) {
         QTextStream(stdout) << QApplication::applicationName() << ' ' << QApplication::applicationVersion() << '\n';
         return 0;
     }
+
+    QApplication::setDesktopFileName("mx-live-usb-maker");
 
     QApplication::setWindowIcon(QIcon::fromTheme(QApplication::applicationName()));
 
