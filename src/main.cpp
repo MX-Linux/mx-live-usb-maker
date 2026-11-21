@@ -30,6 +30,8 @@
 #include <QStandardPaths>
 #include <QTranslator>
 
+#include <memory>
+
 #include "common.h"
 #include "mainwindow.h"
 
@@ -58,28 +60,36 @@ static QString sessionLogPath()
 
 int main(int argc, char *argv[])
 {
-    if (qEnvironmentVariableIsEmpty("DISPLAY") && qEnvironmentVariableIsEmpty("WAYLAND_DISPLAY")
-        && qEnvironmentVariableIsEmpty("QT_QPA_PLATFORM")) {
-        qWarning("mx-live-usb-maker: no display available (DISPLAY and WAYLAND_DISPLAY are both unset); "
-                "a graphical session is required to run this program.");
-        return EXIT_FAILURE;
-    }
+    const QByteArray option = argc == 2 ? QByteArray(argv[1]) : QByteArray();
+    const bool informational = option == "-h" || option == "--help" || option == "--help-all"
+                               || option == "-v" || option == "--version";
+    std::unique_ptr<QCoreApplication> app;
+    if (informational) {
+        app = std::make_unique<QCoreApplication>(argc, argv);
+    } else {
+        if (qEnvironmentVariableIsEmpty("DISPLAY") && qEnvironmentVariableIsEmpty("WAYLAND_DISPLAY")
+            && qEnvironmentVariableIsEmpty("QT_QPA_PLATFORM")) {
+            qWarning("mx-live-usb-maker: no display available (DISPLAY and WAYLAND_DISPLAY are both unset); "
+                    "a graphical session is required to run this program.");
+            return EXIT_FAILURE;
+        }
 
-    if (getuid() == 0) {
-        qputenv("XDG_RUNTIME_DIR", "/run/user/0");
-        qunsetenv("SESSION_MANAGER");
-    }
-    // Set Qt platform to XCB (X11) if not already set and we're in X11 environment
-    if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORM")) {
-        if (!qEnvironmentVariableIsEmpty("DISPLAY") && qEnvironmentVariableIsEmpty("WAYLAND_DISPLAY")) {
+        if (getuid() == 0) {
+            qputenv("XDG_RUNTIME_DIR", "/run/user/0");
+            qunsetenv("SESSION_MANAGER");
+        }
+        // Set Qt platform to XCB (X11) if not already set and we're in X11 environment
+        if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORM") && !qEnvironmentVariableIsEmpty("DISPLAY")
+            && qEnvironmentVariableIsEmpty("WAYLAND_DISPLAY")) {
             qputenv("QT_QPA_PLATFORM", "xcb");
+        }
+
+        app = std::make_unique<QApplication>(argc, argv);
+        if (getuid() == 0) {
+            qputenv("HOME", "/root");
         }
     }
 
-    QApplication app(argc, argv);
-    if (getuid() == 0) {
-        qputenv("HOME", "/root");
-    }
     QApplication::setApplicationVersion(VERSION);
 
     QCommandLineParser parser;
@@ -89,7 +99,7 @@ int main(int argc, char *argv[])
     parser.addVersionOption();
     parser.addPositionalArgument(QObject::tr("filename"), QObject::tr("Name of .iso file to open"),
                                  QObject::tr("[filename]"));
-    parser.process(app);
+    parser.process(*app);
 
     QApplication::setWindowIcon(QIcon::fromTheme(QApplication::applicationName()));
 
