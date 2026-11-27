@@ -7,6 +7,14 @@ app=mx-live-usb-maker
 output=$repo/build-appimage
 tools=$output/tools
 
+offline=false
+if [[ $# == 1 && $1 == --offline ]]; then
+    offline=true
+elif [[ $# != 0 ]]; then
+    echo "Usage: $0 [--offline]" >&2
+    exit 2
+fi
+
 if [[ $(uname -sm) != 'Linux x86_64' ]]; then
     echo "This script builds an x86-64 AppImage on x86-64 Linux." >&2
     exit 1
@@ -20,6 +28,10 @@ trap 'rm -rf -- "$work"' EXIT
 fetch() {
     local name=$1 url=$2 digest=$3
     if [[ ! -f $tools/$name ]]; then
+        if "$offline"; then
+            echo "Missing cached file for offline build: $name" >&2
+            exit 1
+        fi
         curl --fail --location --retry 3 --output "$work/$name" "$url"
         (cd "$work" && echo "$digest  $name" | sha256sum --check)
         mv -f -- "$work/$name" "$tools/$name"
@@ -38,18 +50,38 @@ fetch runtime-x86_64 https://github.com/AppImage/type2-runtime/releases/download
     2fca8b443c92510f1483a883f60061ad09b46b978b2631c807cd873a47ec260d
 chmod 755 "$tools/$deploy" "$tools/$plugin" "$tools/runtime-x86_64"
 
-pool=https://mxrepo.com/mx/repo/pool/main
-lum=live-usb-maker_2.41.29_all.deb
-utils=cli-shell-utils_0.4.2+10mx25_all.deb
-fetch "$lum" "$pool/l/live-usb-maker/$lum" \
-    21f5ac5b0c2bee94ce527478c590c1a94a2771438af2928e4e863ca6d5142e9e
-fetch "$utils" "$pool/c/cli-shell-utils/$utils" \
-    8d06ea0c94b4996706046ffdf44a134ad943c131d6d02d49f7fc0f7463f7d077
+mxrepo=https://mxrepo.com/mx/repo
+keyring=mx25-archive-keyring_2025.03_all.deb
+fetch "$keyring" "$mxrepo/pool/main/m/mx25-archive-keyring/$keyring" \
+    c490bc3fa24b8fe1c3850c0f5175b1e7f595c379369c08890db5044e26385bee
+dpkg-deb -x "$tools/$keyring" "$work/keyring"
+
+# Give APT its own sources, keys and package lists, including on plain Debian.
+aptEtc=$work/keyring/etc/apt
+# APT's _apt user needs to reach the public key when CI runs as root.
+chmod 711 "$work"
+mkdir -p "$aptEtc/apt.conf.d" "$aptEtc/preferences.d" "$aptEtc/sources.list.d" "$tools/mx25-lists/partial"
+echo "deb [arch=amd64] $mxrepo trixie main" > "$aptEtc/sources.list"
+cat > "$work/apt.conf" <<EOF
+Dir::Etc "$aptEtc";
+Dir::State::lists "$tools/mx25-lists";
+Dir::State::status "/dev/null";
+Dir::Cache "$work";
+Acquire::Languages "none";
+EOF
+if ! "$offline"; then
+    APT_CONFIG="$work/apt.conf" apt-get --error-on=any update
+fi
 
 packages=$work/packages
 backend=$work/backend
-dpkg-deb -x "$tools/$lum" "$packages"
-dpkg-deb -x "$tools/$utils" "$packages"
+for package in live-usb-maker cli-shell-utils; do
+    record=$(APT_CONFIG="$work/apt.conf" apt-cache --no-all-versions show "$package")
+    path=$(sed -n 's/^Filename: //p' <<< "$record")
+    digest=$(sed -n 's/^SHA256: //p' <<< "$record")
+    fetch "${path##*/}" "$mxrepo/$path" "$digest"
+    dpkg-deb -x "$tools/${path##*/}" "$packages"
+done
 install -Dm755 "$packages/usr/bin/live-usb-maker" "$backend/bin/live-usb-maker"
 cp -R "$packages/usr/lib/cli-shell-utils" "$backend/"
 cp -R "$packages/usr/share/locale" "$backend/cli-shell-utils/"
