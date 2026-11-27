@@ -68,8 +68,8 @@
     </message>
     <message>
         <location filename="../src/mainwindow.ui" line="745"/>
-        <location filename="../src/mainwindow.cpp" line="830"/>
-        <location filename="../src/mainwindow.cpp" line="853"/>
+        <location filename="../src/mainwindow.cpp" line="835"/>
+        <location filename="../src/mainwindow.cpp" line="858"/>
         <source>Select ISO</source>
         <translation>Izberi ISO</translation>
     </message>
@@ -190,7 +190,7 @@
     </message>
     <message>
         <location filename="../src/mainwindow.ui" line="755"/>
-        <location filename="../src/mainwindow.cpp" line="746"/>
+        <location filename="../src/mainwindow.cpp" line="751"/>
         <source>Show advanced options</source>
         <translation>Prikaži napredne možnosti</translation>
     </message>
@@ -270,39 +270,44 @@
         <translation>Kloniraj zagnan živi sistem</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="584"/>
-        <location filename="../src/mainwindow.cpp" line="731"/>
-        <location filename="../src/mainwindow.cpp" line="959"/>
+        <location filename="../src/mainwindow.cpp" line="589"/>
+        <location filename="../src/mainwindow.cpp" line="736"/>
+        <location filename="../src/mainwindow.cpp" line="966"/>
         <source>Failure</source>
         <translation>Napaka</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="160"/>
+        <location filename="../src/mainwindow.cpp" line="164"/>
         <source>Source and destination are on the same device, please select again.</source>
         <translation>Vir in cilj se nahajata na isti napravi. Prosimo, ponovite izbor.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1004"/>
+        <location filename="../src/mainwindow.cpp" line="736"/>
+        <source>Could not find linuxfs file in %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="1013"/>
         <source>Source Error</source>
         <translation>Napaka vira</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1005"/>
+        <location filename="../src/mainwindow.cpp" line="1014"/>
         <source>Could not find the source linuxfs file.</source>
         <translation>Ni bilo mogoče najti linuxfs izvorne  datoteke</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1026"/>
+        <location filename="../src/mainwindow.cpp" line="1035"/>
         <source>Warning: The target device (%1) is smaller than the source (%2). The data might not fit. Do you want to continue?</source>
         <translation>Opozorilo: Ciljna naprava (%1) je manjša od vira (%2), zato je lahko podatkov preveč. Ali želite nadaljevati?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1029"/>
+        <location filename="../src/mainwindow.cpp" line="1038"/>
         <source>Size Warning</source>
         <translation>Opozorilo o velikosti</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1037"/>
+        <location filename="../src/mainwindow.cpp" line="1046"/>
         <source>The target device %1 is larger than %2 GB.
 
 This may indicate you have selected the wrong device.
@@ -313,12 +318,12 @@ To je lahko posledica izbora napačnega pogona.
 Ali res želite nadaljevati?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1044"/>
+        <location filename="../src/mainwindow.cpp" line="1053"/>
         <source>Large Target Device Warning</source>
         <translation>Opozorilo o velikem pogonu</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="200"/>
+        <location filename="../src/mainwindow.cpp" line="204"/>
         <source>Writing %1 using 'dd' command to /dev/%2,
 
 Please wait until the process is completed</source>
@@ -327,37 +332,37 @@ Please wait until the process is completed</source>
 Počakajte, da se postopek zaključi</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="215"/>
+        <location filename="../src/mainwindow.cpp" line="219"/>
         <source>MX Live Usb Maker</source>
         <translation>MX Ustvarjalnik živih usb ključkov</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="581"/>
+        <location filename="../src/mainwindow.cpp" line="586"/>
         <source>Success</source>
         <translation>Operacija je uspela</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="581"/>
+        <location filename="../src/mainwindow.cpp" line="586"/>
         <source>LiveUSB creation successful!</source>
         <translation>ŽiviUSB je bil uspešno ustvarjen!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="584"/>
+        <location filename="../src/mainwindow.cpp" line="589"/>
         <source>Error encountered in the LiveUSB creation process</source>
         <translation>ŽiviUSB ni bil uspešno ustvarjen</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="650"/>
+        <location filename="../src/mainwindow.cpp" line="655"/>
         <source>Error</source>
         <translation>Napaka</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="650"/>
+        <location filename="../src/mainwindow.cpp" line="655"/>
         <source>Please select a USB device to write to</source>
         <translation>Izberite USB napravo, na katero naj se zapisuje</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="656"/>
+        <location filename="../src/mainwindow.cpp" line="661"/>
         <source>Update mode is selected. The live system on %1 will be updated with the new ISO without reformatting the device.
 
 Existing data and persistence should remain, but please back up anything important.
@@ -369,7 +374,7 @@ Trenutni podatki in obstojnost bi se morali ohraniti, vseeno ustvarite varnostno
 </translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="661"/>
+        <location filename="../src/mainwindow.cpp" line="666"/>
         <source>These actions will destroy all data on 
 
 </source>
@@ -378,85 +383,80 @@ Trenutni podatki in obstojnost bi se morali ohraniti, vseeno ustvarite varnostno
 </translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="661"/>
+        <location filename="../src/mainwindow.cpp" line="666"/>
         <source>Do you wish to continue?</source>
         <translation>Ali želite nadaljevati?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="694"/>
+        <location filename="../src/mainwindow.cpp" line="699"/>
         <source>About %1</source>
         <translation>O %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="695"/>
+        <location filename="../src/mainwindow.cpp" line="700"/>
         <source>Version: </source>
         <translation>Različica:</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="697"/>
+        <location filename="../src/mainwindow.cpp" line="702"/>
         <source>Program for creating a live-usb from an iso-file, another live-usb, a live-cd/dvd, or a running live system.</source>
         <translation>Program, ki ustvari živi-usb iz iso datoteke, drugega živega usb pogona, živega cd/dvd ploščka ali iz sistema, ki je zagnan v živo.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="700"/>
+        <location filename="../src/mainwindow.cpp" line="705"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="701"/>
+        <location filename="../src/mainwindow.cpp" line="706"/>
         <source>%1 License</source>
         <translation>%1 licenca</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="708"/>
+        <location filename="../src/mainwindow.cpp" line="713"/>
         <source>%1 Help</source>
         <translation>%1 pomoč</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="716"/>
+        <location filename="../src/mainwindow.cpp" line="721"/>
         <source>Select an ISO file to write to the USB drive</source>
         <translation>Izberite ISO datoteko, ki naj se zapiše na USB pogon</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="717"/>
+        <location filename="../src/mainwindow.cpp" line="722"/>
         <source>ISO Files (*.iso);;All Files (*.*)</source>
         <translation>ISO datoteke (*.iso);;Vse datoteke (*.*)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="722"/>
-        <location filename="../src/mainwindow.cpp" line="825"/>
+        <location filename="../src/mainwindow.cpp" line="727"/>
+        <location filename="../src/mainwindow.cpp" line="830"/>
         <source>Select Source Directory</source>
         <translation>Izberite direktorij z virom</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="731"/>
-        <source>Could not find linuxfs file</source>
-        <translation>Ni bilo mogoče najti linuxfs datoteke</translation>
-    </message>
-    <message>
-        <location filename="../src/mainwindow.cpp" line="746"/>
+        <location filename="../src/mainwindow.cpp" line="751"/>
         <source>Hide advanced options</source>
         <translation>Skrij napredne možnosti</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="824"/>
-        <location filename="../src/mainwindow.cpp" line="843"/>
+        <location filename="../src/mainwindow.cpp" line="829"/>
+        <location filename="../src/mainwindow.cpp" line="848"/>
         <source>Select Source</source>
         <translation>Izberi vir</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="829"/>
-        <location filename="../src/mainwindow.cpp" line="851"/>
+        <location filename="../src/mainwindow.cpp" line="834"/>
+        <location filename="../src/mainwindow.cpp" line="856"/>
         <source>Select ISO file</source>
         <translation>Izberi ISO datoteko</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="845"/>
+        <location filename="../src/mainwindow.cpp" line="850"/>
         <source>clone</source>
         <translation>kloniraj</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="915"/>
+        <location filename="../src/mainwindow.cpp" line="922"/>
         <source>Could not find a log file at: </source>
         <translation>Nisem našel dnevnika v:</translation>
     </message>
@@ -492,43 +492,43 @@ Trenutni podatki in obstojnost bi se morali ohraniti, vseeno ustvarite varnostno
         <translation>&amp;Zapri</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="60"/>
+        <location filename="../src/main.cpp" line="79"/>
         <source>Program for creating a live-usb from an iso-file, another live-usb, a live-cd/dvd, or a running live system.</source>
         <translation>Program, ki ustvari živi-usb iz iso datoteke, drugega živega usb pogona, živega cd/dvd ploščka ali iz sistema, ki je zagnan v živo.</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="64"/>
+        <location filename="../src/main.cpp" line="83"/>
         <source>filename</source>
         <translation>ime datoteke</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="64"/>
+        <location filename="../src/main.cpp" line="83"/>
         <source>Name of .iso file to open</source>
         <translation>Ime .iso datoteke za odpiranje</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="65"/>
+        <location filename="../src/main.cpp" line="84"/>
         <source>[filename]</source>
         <translation>[ime datoteke]</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="93"/>
-        <location filename="../src/main.cpp" line="102"/>
+        <location filename="../src/main.cpp" line="112"/>
+        <location filename="../src/main.cpp" line="121"/>
         <source>Error</source>
         <translation>Napaka</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="94"/>
+        <location filename="../src/main.cpp" line="113"/>
         <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
         <translation>Prijevljeni ste kot korenski uporabnik. Izpišite se in se ponovno prijavite kot običajen uporabnik, če želite uporabljati ta program.</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="102"/>
+        <location filename="../src/main.cpp" line="121"/>
         <source>You must run this program as root.</source>
         <translation>Ta program morate zagnati korensko</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="117"/>
+        <location filename="../src/main.cpp" line="144"/>
         <source>version:</source>
         <translation>različica:</translation>
     </message>

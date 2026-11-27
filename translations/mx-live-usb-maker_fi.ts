@@ -68,8 +68,8 @@
     </message>
     <message>
         <location filename="../src/mainwindow.ui" line="745"/>
-        <location filename="../src/mainwindow.cpp" line="830"/>
-        <location filename="../src/mainwindow.cpp" line="853"/>
+        <location filename="../src/mainwindow.cpp" line="835"/>
+        <location filename="../src/mainwindow.cpp" line="858"/>
         <source>Select ISO</source>
         <translation>Valitse ISO-tiedosto</translation>
     </message>
@@ -190,7 +190,7 @@
     </message>
     <message>
         <location filename="../src/mainwindow.ui" line="755"/>
-        <location filename="../src/mainwindow.cpp" line="746"/>
+        <location filename="../src/mainwindow.cpp" line="751"/>
         <source>Show advanced options</source>
         <translation>Näytä lisäasetukset</translation>
     </message>
@@ -270,39 +270,44 @@
         <translation>Kloonaa käynnissä oleva livejärjestelmä</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="584"/>
-        <location filename="../src/mainwindow.cpp" line="731"/>
-        <location filename="../src/mainwindow.cpp" line="959"/>
+        <location filename="../src/mainwindow.cpp" line="589"/>
+        <location filename="../src/mainwindow.cpp" line="736"/>
+        <location filename="../src/mainwindow.cpp" line="966"/>
         <source>Failure</source>
         <translation>Virhe</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="160"/>
+        <location filename="../src/mainwindow.cpp" line="164"/>
         <source>Source and destination are on the same device, please select again.</source>
         <translation>Lähde ja kohde osoittavat samaan laitteeseen, tee valinnat uudestaan.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1004"/>
+        <location filename="../src/mainwindow.cpp" line="736"/>
+        <source>Could not find linuxfs file in %1</source>
+        <translation>Linuxfs-tiedostoa ei löytynyt kohteesta %1</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="1013"/>
         <source>Source Error</source>
         <translation>Lukuvirhe</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1005"/>
+        <location filename="../src/mainwindow.cpp" line="1014"/>
         <source>Could not find the source linuxfs file.</source>
         <translation>Linuxfs-lähdetiedostoa ei löytynyt.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1026"/>
+        <location filename="../src/mainwindow.cpp" line="1035"/>
         <source>Warning: The target device (%1) is smaller than the source (%2). The data might not fit. Do you want to continue?</source>
         <translation>Varoitus: Kohde (%1) on pienempi kuin lähde (%2). Koko data ei ehkä mahdu. Haluatko silti jatkaa?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1029"/>
+        <location filename="../src/mainwindow.cpp" line="1038"/>
         <source>Size Warning</source>
         <translation>Kokovaroitus</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1037"/>
+        <location filename="../src/mainwindow.cpp" line="1046"/>
         <source>The target device %1 is larger than %2 GB.
 
 This may indicate you have selected the wrong device.
@@ -313,12 +318,12 @@ Saattaa tarkoittaa, että olet valinnut väärän laitteen.
 Haluatko varmasti jatkaa?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1044"/>
+        <location filename="../src/mainwindow.cpp" line="1053"/>
         <source>Large Target Device Warning</source>
         <translation>Suuren kohdelaitteen varoitus</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="200"/>
+        <location filename="../src/mainwindow.cpp" line="204"/>
         <source>Writing %1 using 'dd' command to /dev/%2,
 
 Please wait until the process is completed</source>
@@ -327,37 +332,37 @@ Please wait until the process is completed</source>
 Odota kunnes prosessi on valmis</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="215"/>
+        <location filename="../src/mainwindow.cpp" line="219"/>
         <source>MX Live Usb Maker</source>
         <translation>MX Live Usb Maker</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="581"/>
+        <location filename="../src/mainwindow.cpp" line="586"/>
         <source>Success</source>
         <translation>Onnistui</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="581"/>
+        <location filename="../src/mainwindow.cpp" line="586"/>
         <source>LiveUSB creation successful!</source>
         <translation>LiveUSB:n luominen onnistui!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="584"/>
+        <location filename="../src/mainwindow.cpp" line="589"/>
         <source>Error encountered in the LiveUSB creation process</source>
         <translation>LiveUSB:n luomisen toimituksessa kohdattiin virhe</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="650"/>
+        <location filename="../src/mainwindow.cpp" line="655"/>
         <source>Error</source>
         <translation>Virhe</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="650"/>
+        <location filename="../src/mainwindow.cpp" line="655"/>
         <source>Please select a USB device to write to</source>
         <translation>Ole hyvä ja valitse USB-laite, jolle kirjoitetaan</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="656"/>
+        <location filename="../src/mainwindow.cpp" line="661"/>
         <source>Update mode is selected. The live system on %1 will be updated with the new ISO without reformatting the device.
 
 Existing data and persistence should remain, but please back up anything important.
@@ -370,7 +375,7 @@ Olemassa olevan datan pitäisi säilyä, mutta suosittelemme varmuuskopioinia.
 Haluatko jatkaa?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="661"/>
+        <location filename="../src/mainwindow.cpp" line="666"/>
         <source>These actions will destroy all data on 
 
 </source>
@@ -379,85 +384,80 @@ Haluatko jatkaa?</translation>
 </translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="661"/>
+        <location filename="../src/mainwindow.cpp" line="666"/>
         <source>Do you wish to continue?</source>
         <translation>Haluatko jatkaa?</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="694"/>
+        <location filename="../src/mainwindow.cpp" line="699"/>
         <source>About %1</source>
         <translation>%1 lisätietoja</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="695"/>
+        <location filename="../src/mainwindow.cpp" line="700"/>
         <source>Version: </source>
         <translation>Versio: </translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="697"/>
+        <location filename="../src/mainwindow.cpp" line="702"/>
         <source>Program for creating a live-usb from an iso-file, another live-usb, a live-cd/dvd, or a running live system.</source>
         <translation>Ohjelma live-usb:n tekemistä varten iso-tiedostosta, toisesta live-usb:stä, live-cd:stä/dvd:stä tai ajossa olevasta järjestelmästä.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="700"/>
+        <location filename="../src/mainwindow.cpp" line="705"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="701"/>
+        <location filename="../src/mainwindow.cpp" line="706"/>
         <source>%1 License</source>
         <translation>%1 lupa</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="708"/>
+        <location filename="../src/mainwindow.cpp" line="713"/>
         <source>%1 Help</source>
         <translation>%1 Apuopas</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="716"/>
+        <location filename="../src/mainwindow.cpp" line="721"/>
         <source>Select an ISO file to write to the USB drive</source>
         <translation>Valitse ISO-tiedosto joka USB-asemaan kirjoitetaan</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="717"/>
+        <location filename="../src/mainwindow.cpp" line="722"/>
         <source>ISO Files (*.iso);;All Files (*.*)</source>
         <translation>ISO-tiedostot (*.iso);;Kaikki tiedostot (*.*)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="722"/>
-        <location filename="../src/mainwindow.cpp" line="825"/>
+        <location filename="../src/mainwindow.cpp" line="727"/>
+        <location filename="../src/mainwindow.cpp" line="830"/>
         <source>Select Source Directory</source>
         <translation>Valitse lähdehakemisto</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="731"/>
-        <source>Could not find linuxfs file</source>
-        <translation>linuxfs-tiedostoa ei löytynyt</translation>
-    </message>
-    <message>
-        <location filename="../src/mainwindow.cpp" line="746"/>
+        <location filename="../src/mainwindow.cpp" line="751"/>
         <source>Hide advanced options</source>
         <translation>Piilota lisäasetukset</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="824"/>
-        <location filename="../src/mainwindow.cpp" line="843"/>
+        <location filename="../src/mainwindow.cpp" line="829"/>
+        <location filename="../src/mainwindow.cpp" line="848"/>
         <source>Select Source</source>
         <translation>Valitse lähde</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="829"/>
-        <location filename="../src/mainwindow.cpp" line="851"/>
+        <location filename="../src/mainwindow.cpp" line="834"/>
+        <location filename="../src/mainwindow.cpp" line="856"/>
         <source>Select ISO file</source>
         <translation>Valitse ISO-tiedosto</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="845"/>
+        <location filename="../src/mainwindow.cpp" line="850"/>
         <source>clone</source>
         <translation>kloonaa</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="915"/>
+        <location filename="../src/mainwindow.cpp" line="922"/>
         <source>Could not find a log file at: </source>
         <translation>Lokitiedostoa ei löytynyt:</translation>
     </message>
@@ -493,43 +493,43 @@ Haluatko jatkaa?</translation>
         <translation>&amp;Sulje</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="60"/>
+        <location filename="../src/main.cpp" line="79"/>
         <source>Program for creating a live-usb from an iso-file, another live-usb, a live-cd/dvd, or a running live system.</source>
         <translation>Ohjelma live-usb:n tekemistä varten iso-tiedostosta, toisesta live-usb:stä, live-cd:stä/dvd:stä tai ajossa olevasta järjestelmästä.</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="64"/>
+        <location filename="../src/main.cpp" line="83"/>
         <source>filename</source>
         <translation>tiedostonimi</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="64"/>
+        <location filename="../src/main.cpp" line="83"/>
         <source>Name of .iso file to open</source>
         <translation>Avattava .iso-tiedoston nimi</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="65"/>
+        <location filename="../src/main.cpp" line="84"/>
         <source>[filename]</source>
         <translation>[tiedostonimi]</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="93"/>
-        <location filename="../src/main.cpp" line="102"/>
+        <location filename="../src/main.cpp" line="112"/>
+        <location filename="../src/main.cpp" line="121"/>
         <source>Error</source>
         <translation>Virhe</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="94"/>
+        <location filename="../src/main.cpp" line="113"/>
         <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
         <translation>Olet kirjautunut sisään pääkäyttäjänä. Kirjaudu sisään normaalina käyttäjänä käyttääksesi tätä ohjelmaa.</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="102"/>
+        <location filename="../src/main.cpp" line="121"/>
         <source>You must run this program as root.</source>
         <translation>Sinun täytyy suorittaa tämä ohjelma pääkäyttäjänä.</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="117"/>
+        <location filename="../src/main.cpp" line="144"/>
         <source>version:</source>
         <translation>versio:</translation>
     </message>

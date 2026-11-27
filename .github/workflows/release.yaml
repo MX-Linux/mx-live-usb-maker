@@ -9,7 +9,55 @@ on:
 
 jobs:
   create-release:
+    if: ${{ !github.event.deleted }}
     uses: MX-Linux/.github/.github/workflows/release.yaml@main
     secrets: inherit
     permissions:
       contents: write
+
+  build-appimage:
+    if: ${{ !github.event.deleted }}
+    runs-on: ubuntu-24.04
+    container: debian:bookworm-slim
+    permissions:
+      contents: read
+    steps:
+      - name: Install AppImage build dependencies
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends \
+            ca-certificates git build-essential cmake ninja-build dpkg-dev curl file \
+            qt6-base-dev qt6-tools-dev qt6-tools-dev-tools libqt6svg6 qt6-translations-l10n qt6-wayland
+
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Build and verify the x86-64 AppImage
+        run: ./make-appimage.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: appimage
+          path: build-appimage/*.AppImage
+          if-no-files-found: error
+          compression-level: 0
+          overwrite: true
+
+  upload-appimage:
+    needs: [create-release, build-appimage]
+    # The shared workflow can fail its OBS trigger after publishing the GitHub release.
+    if: ${{ !cancelled() && needs.build-appimage.result == 'success' }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: appimage
+          path: dist
+
+      - name: Attach the AppImage to the tagged release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "$GITHUB_REF_NAME" dist/*.AppImage --repo "$GITHUB_REPOSITORY" --clobber

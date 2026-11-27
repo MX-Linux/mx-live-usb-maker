@@ -22,7 +22,6 @@ fetch() {
     if [[ ! -f $tools/$name ]]; then
         curl --fail --location --retry 3 --output "$work/$name" "$url"
         (cd "$work" && echo "$digest  $name" | sha256sum --check)
-        chmod 755 "$work/$name"
         mv -f -- "$work/$name" "$tools/$name"
     else
         (cd "$tools" && echo "$digest  $name" | sha256sum --check)
@@ -37,14 +36,40 @@ fetch "$plugin" "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/d
     15106be885c1c48a021198e7e1e9a48ce9d02a86dd0a1848f00bdbf3c1c92724
 fetch runtime-x86_64 https://github.com/AppImage/type2-runtime/releases/download/20251108/runtime-x86_64 \
     2fca8b443c92510f1483a883f60061ad09b46b978b2631c807cd873a47ec260d
+chmod 755 "$tools/$deploy" "$tools/$plugin" "$tools/runtime-x86_64"
+
+pool=https://mxrepo.com/mx/repo/pool/main
+lum=live-usb-maker_2.41.29_all.deb
+utils=cli-shell-utils_0.4.2+10mx25_all.deb
+fetch "$lum" "$pool/l/live-usb-maker/$lum" \
+    21f5ac5b0c2bee94ce527478c590c1a94a2771438af2928e4e863ca6d5142e9e
+fetch "$utils" "$pool/c/cli-shell-utils/$utils" \
+    8d06ea0c94b4996706046ffdf44a134ad943c131d6d02d49f7fc0f7463f7d077
+
+packages=$work/packages
+backend=$work/backend
+dpkg-deb -x "$tools/$lum" "$packages"
+dpkg-deb -x "$tools/$utils" "$packages"
+install -Dm755 "$packages/usr/bin/live-usb-maker" "$backend/bin/live-usb-maker"
+cp -R "$packages/usr/lib/cli-shell-utils" "$backend/"
+cp -R "$packages/usr/share/locale" "$backend/cli-shell-utils/"
+tar -czf "$work/backend.tar.gz" -C "$backend" bin cli-shell-utils
 
 build=$work/build
 appdir=$work/AppDir
-cmake -S "$repo" -B "$build" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DAPPIMAGE_BUILD=ON
+cmake -S "$repo" -B "$build" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+    -DAPPIMAGE_BUILD=ON -DAPPIMAGE_BACKEND_ARCHIVE="$work/backend.tar.gz"
 cmake --build "$build" --parallel
 DESTDIR="$appdir" cmake --install "$build"
 
 share=$appdir/usr/share
+mkdir -p "$share/doc"
+cp -R "$packages/usr/share/doc/"{live-usb-maker,cli-shell-utils} "$share/doc/"
+if ! "$appdir/usr/libexec/$app/helper" exec live-usb-maker --help > "$work/backend-help" ||
+    ! grep -q -- '--data-first' "$work/backend-help"; then
+    echo "The bundled live-usb-maker backend failed its help check." >&2
+    exit 1
+fi
 install -Dm644 -t "$share/$app/locale" "$build"/"$app"_*.qm
 install -Dm644 -t "$share/doc/$app" help/* authors.txt LICENSE
 gzip -nc debian/changelog > "$share/doc/$app/changelog.gz"

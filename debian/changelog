@@ -1,3 +1,16 @@
+mx-live-usb-maker (26.11) mx; urgency=medium
+
+  * Offer an x86-64 AppImage on GitHub Releases that includes live-usb-maker.
+  * Select full-featured mode for MX and antiX ISO images even when the
+    file name contains an apostrophe.
+  * Calculate source sizes correctly when ISO or clone paths contain
+    characters such as quotation marks or dollar signs.
+  * Show which folder was checked when a clone source is missing linuxfs.
+  * Show command-line help and version information without a graphical session.
+  * Keep new session logs private to the user running the application.
+
+ -- Adrian <adrian@mxlinux.org>  Fri, 27 Nov 2026 15:41:36 -0500
+
 mx-live-usb-maker (26.04.1) mx; urgency=medium
 
   * Fix live-boot drive detection (use readAll instead of QTextStream)

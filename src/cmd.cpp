@@ -79,7 +79,7 @@ bool Cmd::helperProc(const QString &programPath, const QStringList &args, QStrin
     helperArgs += args;
 
 #ifdef APPIMAGE_BUILD
-    // The bundled helper runs as the desktop user and elevates only the host command.
+    // The bundled helper opens AppImage resources before requesting elevation.
     return proc(QCoreApplication::applicationDirPath() + "/../libexec/mx-live-usb-maker/helper",
                 helperArgs, output, input, quiet);
 #else

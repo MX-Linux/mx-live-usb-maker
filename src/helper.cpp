@@ -59,7 +59,11 @@ void printError(const QString &message)
     static const QHash<QString, QStringList> commands {
         {"dd", {"/usr/bin/dd", "/bin/dd"}},
         {"kill", {"/usr/bin/kill", "/bin/kill"}},
+#ifdef APPIMAGE_BUILD
+        {"live-usb-maker", {"/bin/sh"}},
+#else
         {"live-usb-maker", {"/usr/local/bin/live-usb-maker", "/usr/bin/live-usb-maker"}},
+#endif
         {"umount", {"/usr/bin/umount", "/bin/umount"}},
     };
     return commands;
@@ -76,7 +80,7 @@ void printError(const QString &message)
     return {};
 }
 
-[[nodiscard]] ProcessResult runProcess(QString program, QStringList args)
+[[nodiscard]] ProcessResult runProcess(const QString &program, const QStringList &args, const QString &inputFile)
 {
     ProcessResult result;
     QProcess process;
@@ -95,12 +99,9 @@ void printError(const QString &message)
                          loop.quit();
                      });
 
-#ifdef APPIMAGE_BUILD
-    if (getuid() != 0) {
-        args.prepend(program);
-        program = QStringLiteral("/usr/bin/pkexec");
+    if (!inputFile.isEmpty()) {
+        process.setStandardInputFile(inputFile);
     }
-#endif
     process.start(program, args, QIODevice::ReadOnly);
     if (!process.waitForStarted()) {
         printError(QString("Failed to start %1").arg(program));
@@ -130,13 +131,42 @@ void printError(const QString &message)
         return 127;
     }
 
-    const QString resolvedBinary = resolveBinary(commandIt.value());
+    QString resolvedBinary = resolveBinary(commandIt.value());
     if (resolvedBinary.isEmpty()) {
         printError(QString("Command is not available: %1").arg(command));
         return 127;
     }
 
-    const ProcessResult result = runProcess(resolvedBinary, args.mid(1));
+    QStringList commandArgs = args.mid(1);
+    QString inputFile;
+#ifdef APPIMAGE_BUILD
+    bool elevate = getuid() != 0;
+    if (command == QLatin1String("live-usb-maker")) {
+        // Open the payload before pkexec. Root cannot normally traverse the user's FUSE mount.
+        inputFile = QCoreApplication::applicationDirPath() + "/backend.tar.gz";
+        if (commandArgs == QStringList {QStringLiteral("--help")}) {
+            elevate = false;
+        }
+        commandArgs.prepend(command); // sh -c uses this as $0.
+        commandArgs.prepend(QStringLiteral(R"sh(set -eu
+base=/tmp
+if [ "$(id -u)" = 0 ]; then base=/var/cache; fi
+work=$(mktemp -d "$base/mx-live-usb-maker.XXXXXXXX")
+trap 'rm -rf -- "$work"' EXIT
+trap 'exit 1' HUP INT TERM
+cat > "$work/backend.tar.gz"
+(cd "$work" && echo '%1  backend.tar.gz' | sha256sum --check --quiet)
+tar -xzf "$work/backend.tar.gz" --no-same-owner -C "$work"
+/bin/bash "$work/bin/live-usb-maker" "$@"
+)sh").arg(QStringLiteral(APPIMAGE_BACKEND_SHA256)));
+        commandArgs.prepend(QStringLiteral("-c"));
+    }
+    if (elevate) {
+        commandArgs.prepend(resolvedBinary);
+        resolvedBinary = QStringLiteral("/usr/bin/pkexec");
+    }
+#endif
+    const ProcessResult result = runProcess(resolvedBinary, commandArgs, inputFile);
     if (!result.started) {
         return result.exitCode;
     }

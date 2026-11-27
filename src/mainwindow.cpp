@@ -50,11 +50,15 @@ MainWindow::MainWindow(const QStringList &args, QDialog *parent)
     // Setup options
     QSettings settings("/etc/mx-live-usb-maker/mx-live-usb-maker.conf", QSettings::NativeFormat);
 
+#ifdef APPIMAGE_BUILD
+    LUM = QStringLiteral("live-usb-maker");
+#else
     // Try /usr/local/bin first, then fall back to /usr/bin
     LUM = QStringLiteral("/usr/local/bin/live-usb-maker");
     if (!QFile::exists(LUM)) {
         LUM = QStringLiteral("/usr/bin/live-usb-maker");
     }
+#endif
     qDebug() << "LUM is:" << LUM;
 
     sizeCheck = settings.value("SizeCheck", 128).toUInt(); // in GB
@@ -243,7 +247,12 @@ void MainWindow::setup()
     ui->checkCloneLive->setEnabled(isRunningLive() && !QFile::exists("/live/config/encrypted"));
 
     // Dynamically show or hide data format options based on availability
+#ifdef APPIMAGE_BUILD
+    // The helper handles this exact probe without prompting for authentication.
+    const QString lumHelp = cmd.getOutAsRoot(LUM, {"--help"}, Cmd::QuietMode::Yes);
+#else
     const QString lumHelp = cmd.getOut(LUM + " --help 2>&1", Cmd::QuietMode::Yes);
+#endif
     const bool dataFirstAvailable = lumHelp.contains("--data-first");
     ui->checkDataFirst->setVisible(dataFirstAvailable);
     ui->comboBoxDataFormat->setVisible(dataFirstAvailable);

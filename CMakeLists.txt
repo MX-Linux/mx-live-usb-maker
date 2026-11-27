@@ -141,8 +141,10 @@ add_executable(helper
 )
 
 if(APPIMAGE_BUILD)
+    file(SHA256 "${APPIMAGE_BACKEND_ARCHIVE}" backend_sha256)
+    install(FILES "${APPIMAGE_BACKEND_ARCHIVE}" DESTINATION ${HELPER_INSTALL_DIR} RENAME backend.tar.gz)
     target_compile_definitions(mx-live-usb-maker PRIVATE APPIMAGE_BUILD)
-    target_compile_definitions(helper PRIVATE APPIMAGE_BUILD)
+    target_compile_definitions(helper PRIVATE APPIMAGE_BUILD APPIMAGE_BACKEND_SHA256="${backend_sha256}")
 endif()
 
 # Link Qt6 libraries
