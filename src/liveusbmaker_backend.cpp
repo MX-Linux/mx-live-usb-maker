@@ -144,6 +144,11 @@ bool LiveUsbMakerBackend::runNormal(QString *error)
         return false;
     }
 
+    if (config.pretend) {
+        logLine(QStringLiteral("Pretend mode: skipping write steps."));
+        return true;
+    }
+
     if (!config.forceAutomount) {
         suspendAutomount();
     }
@@ -161,12 +166,6 @@ bool LiveUsbMakerBackend::runNormal(QString *error)
             resumeAutomount();
             return false;
         }
-    }
-
-    if (config.pretend) {
-        logLine(QStringLiteral("Pretend mode: skipping write steps."));
-        resumeAutomount();
-        return true;
     }
 
     bool initrdPrepared = false;
@@ -337,7 +336,9 @@ bool LiveUsbMakerBackend::detectArchIsoLayout()
 
 bool LiveUsbMakerBackend::cleanup()
 {
-    unmountTargets();
+    if (!config.pretend) {
+        unmountTargets();
+    }
     if (config.sourceMode == LiveUsbMakerConfig::SourceMode::Iso) {
         runCommandShell(QStringLiteral("umount -l ") + ShellUtils::quote(paths.isoDir) + QStringLiteral(" 2>/dev/null"), nullptr, true);
     }

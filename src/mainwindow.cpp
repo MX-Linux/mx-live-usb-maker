@@ -688,7 +688,7 @@ void MainWindow::cmdDone()
     if (cmd.exitCode() != 0 || cmd.exitStatus() != QProcess::NormalExit) {
         qDebug() << "Backend QProcess error:" << cmd.error() << cmd.errorString();
     }
-    if ((cmd.exitCode() == 0 && cmd.exitStatus() == QProcess::NormalExit) || ui->checkPretend->isChecked()) {
+    if (cmd.exitCode() == 0 && cmd.exitStatus() == QProcess::NormalExit) {
         qint64 elapsedMs = elapsedTimer.elapsed();
         int totalSeconds = elapsedMs / 1000;
         int minutes = totalSeconds / 60;
