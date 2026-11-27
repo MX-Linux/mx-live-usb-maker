@@ -90,6 +90,7 @@ int main(int argc, char *argv[])
         }
     }
 
+    QApplication::setApplicationName(QStringLiteral("mx-live-usb-maker"));
     QApplication::setApplicationVersion(VERSION);
 
     QCommandLineParser parser;
@@ -115,7 +116,7 @@ int main(int argc, char *argv[])
 
     QTranslator appTran;
     if (appTran.load(QApplication::applicationName() + "_" + QLocale::system().name(),
-                     "/usr/share/" + QApplication::applicationName() + "/locale")) {
+                     sharePath(QApplication::applicationName() + "/locale"))) {
         QApplication::installTranslator(&appTran);
     }
 

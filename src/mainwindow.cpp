@@ -703,13 +703,13 @@ void MainWindow::pushAbout_clicked()
                  "system.")
             + R"(</h3></p><p align="center"><a href="http://mxlinux.org">http://mxlinux.org</a><br /></p><p align="center">)"
             + tr("Copyright (c) MX Linux") + "<br /><br /></p>",
-        "/usr/share/doc/mx-live-usb-maker/license.html", tr("%1 License").arg(windowTitle()), this);
+        sharePath("doc/mx-live-usb-maker/license.html"), tr("%1 License").arg(windowTitle()), this);
     show();
 }
 
 void MainWindow::pushHelp_clicked()
 {
-    const QString helpPath = "/usr/share/doc/mx-live-usb-maker/mx-live-usb-maker.html";
+    const QString helpPath = sharePath("doc/mx-live-usb-maker/mx-live-usb-maker.html");
     displayHelpDoc(helpPath, tr("%1 Help").arg(windowTitle()));
 }
 

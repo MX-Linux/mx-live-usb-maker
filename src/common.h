@@ -21,6 +21,17 @@
  **********************************************************************/
 #pragma once
 
+#include <QCoreApplication>
+
+inline QString sharePath(const QString &relativePath)
+{
+#ifdef APPIMAGE_BUILD
+    return QCoreApplication::applicationDirPath() + "/../share/" + relativePath;
+#else
+    return "/usr/share/" + relativePath;
+#endif
+}
+
 inline const QString starting_home {qEnvironmentVariable("HOME")};
 
 // Size conversion constants

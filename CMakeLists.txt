@@ -60,6 +60,7 @@ endif()
 
 # Option to use clang for testing builds
 option(USE_CLANG "Use clang compiler" OFF)
+option(APPIMAGE_BUILD "Use relocatable data and elevate host commands with pkexec" OFF)
 if(USE_CLANG)
     set(CMAKE_C_COMPILER clang)
     set(CMAKE_CXX_COMPILER clang++)
@@ -138,6 +139,11 @@ add_executable(mx-live-usb-maker
 add_executable(helper
     ${HELPER_SOURCES}
 )
+
+if(APPIMAGE_BUILD)
+    target_compile_definitions(mx-live-usb-maker PRIVATE APPIMAGE_BUILD)
+    target_compile_definitions(helper PRIVATE APPIMAGE_BUILD)
+endif()
 
 # Link Qt6 libraries
 target_link_libraries(mx-live-usb-maker

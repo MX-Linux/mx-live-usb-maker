@@ -32,6 +32,7 @@
 #include <QVBoxLayout>
 
 #include "about.h"
+#include "common.h"
 
 namespace
 {
@@ -137,7 +138,7 @@ void displayAboutMsgBox(const QString &title, const QString &message, const QStr
         QProcess changelogProc;
         changelogProc.start(
             "zcat",
-            {"/usr/share/doc/" + QFileInfo(QCoreApplication::applicationFilePath()).fileName() + "/changelog.gz"},
+            {sharePath("doc/" + QCoreApplication::applicationName() + "/changelog.gz")},
             QIODevice::ReadOnly);
         changelogProc.waitForFinished();
         textEdit->setText(changelogProc.readAllStandardOutput());

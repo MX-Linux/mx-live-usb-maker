@@ -75,21 +75,27 @@ bool Cmd::proc(const QString &programPath, const QStringList &args, QString *out
 bool Cmd::helperProc(const QString &programPath, const QStringList &args, QString *output, const QByteArray *input,
                      QuietMode quiet)
 {
-    if (getuid() != 0 && elevationCommand.isEmpty()) {
-        qWarning() << "No elevation helper available";
-        return false;
-    }
-
     QStringList helperArgs {"exec", QFileInfo(programPath).fileName()};
     helperArgs += args;
 
+#ifdef APPIMAGE_BUILD
+    // The bundled helper runs as the desktop user and elevates only the host command.
+    return proc(QCoreApplication::applicationDirPath() + "/../libexec/mx-live-usb-maker/helper",
+                helperArgs, output, input, quiet);
+#else
     if (getuid() == 0) {
         return proc(helperPath, helperArgs, output, input, quiet);
+    }
+
+    if (elevationCommand.isEmpty()) {
+        qWarning() << "No elevation helper available";
+        return false;
     }
 
     QStringList elevatedArgs {helperPath};
     elevatedArgs += helperArgs;
     return proc(elevationCommand, elevatedArgs, output, input, quiet);
+#endif
 }
 
 bool Cmd::procAsRoot(const QString &programPath, const QStringList &args, QString *output, const QByteArray *input,

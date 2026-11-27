@@ -28,6 +28,7 @@
 #include <QProcess>
 
 #include <cstdio>
+#include <unistd.h>
 
 namespace
 {
@@ -75,7 +76,7 @@ void printError(const QString &message)
     return {};
 }
 
-[[nodiscard]] ProcessResult runProcess(const QString &program, const QStringList &args)
+[[nodiscard]] ProcessResult runProcess(QString program, QStringList args)
 {
     ProcessResult result;
     QProcess process;
@@ -94,6 +95,12 @@ void printError(const QString &message)
                          loop.quit();
                      });
 
+#ifdef APPIMAGE_BUILD
+    if (getuid() != 0) {
+        args.prepend(program);
+        program = QStringLiteral("/usr/bin/pkexec");
+    }
+#endif
     process.start(program, args, QIODevice::ReadOnly);
     if (!process.waitForStarted()) {
         printError(QString("Failed to start %1").arg(program));
